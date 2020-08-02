@@ -1,7 +1,7 @@
 {
   "name": "suntime",
   "private": true,
-  "description": "Simple e-commerce training project. JAM Stack: Gatsby.js, Contentful and Netlify, Stripe for payments, and some GSAP fun.",
+  "description": "Simple e-commerce training project. JAM Stack: Gatsby.js, DatoCMS and Netlify, Stripe for payments, and some GSAP fun.",
   "version": "0.1.0",
   "author": "Paweł Trojnacki",
   "dependencies": {
@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/pawel-trojnacki/suntime"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"

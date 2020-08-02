@@ -1,5 +1,6 @@
 import React from 'react'
 import {useStaticQuery, graphql} from 'gatsby'
+import Img from 'gatsby-image'
 
 const IndexPage = () => {
   const {allDatoCmsProduct} = useStaticQuery(
@@ -14,7 +15,9 @@ const IndexPage = () => {
             frameColor
             lensesColor
             images {
-              url
+              fixed(width: 800) {
+                ...GatsbyDatoCmsFixed
+              }
             }
           }
         }
@@ -33,7 +36,7 @@ const IndexPage = () => {
               {promoprice ? <p>{promoprice}</p> : null}
               <p>{desc}</p>
               {images.map((image, id) => (
-                <img key={id} src={image.url}></img>
+                <Img key={id} fixed={image.fixed} />
               ))}
             </div>
           )

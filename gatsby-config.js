@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Suntime`,
-    description: `Simple e-commerce training project. JAM Stack: Gatsby.js, Contentful and Netlify, Stripe for payments, and some GSAP fun.`,
+    description: `Simple e-commerce training project. JAM Stack: Gatsby.js, DatoCMS and Netlify, Stripe for payments, and some GSAP fun.`,
     author: `Paweł Trojnacki`,
   },
   plugins: [
@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: `gatsby-source-datocms`,
       options: {
-        apiToken: `3a6e9f71a060ff7482fb5c4e0a96cf`,
+        apiToken: process.env.CMS_API_TOKEN,
       },
     },
   ],
