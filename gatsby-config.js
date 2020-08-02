@@ -15,6 +15,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-playground`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -25,6 +26,12 @@ module.exports = {
         theme_color: `#ffe0c5`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: `3a6e9f71a060ff7482fb5c4e0a96cf`,
       },
     },
   ],
