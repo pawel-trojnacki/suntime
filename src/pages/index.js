@@ -14,6 +14,7 @@ const IndexPage = () => {
             shape
             frameColor
             lensesColor
+            sex
             images {
               fixed(width: 800) {
                 ...GatsbyDatoCmsFixed
@@ -28,13 +29,14 @@ const IndexPage = () => {
     <div>
       <h1>Recent products</h1>
       {allDatoCmsProduct.nodes.map(
-        ({name, price, promoprice, desc, images}) => {
+        ({name, price, promoprice, desc, images, sex}) => {
           return (
             <div key={name}>
               <h2>{name}</h2>
               <p>{price}</p>
               {promoprice ? <p>{promoprice}</p> : null}
               <p>{desc}</p>
+              <p>{sex}</p>
               {images.map((image, id) => (
                 <Img key={id} fixed={image.fixed} />
               ))}
