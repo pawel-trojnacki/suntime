@@ -51,7 +51,6 @@ const CardButon = styled.a`
 `
 
 const Navbar = ({open, handleBurgerClick}) => {
-  console.log(handleBurgerClick)
   return (
     <Wrapper>
       <InnerWrapper>

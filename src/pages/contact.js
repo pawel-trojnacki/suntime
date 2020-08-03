@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../components/Layout/Layout'
 
-const NotFoundPage = () => {
+const ContactPage = () => {
   return (
     <Layout>
       <br />
@@ -9,7 +9,7 @@ const NotFoundPage = () => {
       <br />
       <br />
       <br />
-      <h1>not found</h1>
+      <h1>contact</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
         accusantium.
@@ -18,4 +18,4 @@ const NotFoundPage = () => {
   )
 }
 
-export default NotFoundPage
+export default ContactPage

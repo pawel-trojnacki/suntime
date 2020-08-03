@@ -2,6 +2,7 @@ export const theme = {
   black: '#000',
   white: '#fff',
   beige: '#ffe0c5',
+  grey: '#555',
   regular: 400,
   light: 300,
   xxl: '60px',
@@ -11,4 +12,6 @@ export const theme = {
   s: '16px',
   xs: '14px',
   xxs: '12px',
+  headingFont: `'Alegreya', 'Arial', sans-serif`,
+  bodyFont: `'Lato', 'Arial', sans-serif`,
 }
