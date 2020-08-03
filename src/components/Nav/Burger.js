@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-const spanHeight = 2
+import PropTypes from 'prop-types'
 
 const StyledButton = styled.button`
   position: relative;
@@ -24,7 +23,7 @@ const StyledButton = styled.button`
   }
 
   span {
-    height: ${`${spanHeight}px`};
+    height: 2px;
     width: 100%;
     background-color: ${({theme}) => theme.black};
     transition: all 0.5s ease;
@@ -60,6 +59,11 @@ const Burger = ({open, handleBurgerClick}) => {
       <span></span>
     </StyledButton>
   )
+}
+
+Burger.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handleBurgerClick: PropTypes.func.isRequired,
 }
 
 export default Burger

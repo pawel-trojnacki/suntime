@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import Logo from '../../images/logo.svg'
 import Burger from './Burger'
@@ -24,7 +25,7 @@ const InnerWrapper = styled.div`
 const LogoWrapper = styled.img`
   width: 80px;
   @media (min-width: 768px) {
-    width: 100px;
+    width: 110px;
   }
 `
 
@@ -64,6 +65,11 @@ const Navbar = ({open, handleBurgerClick}) => {
       </InnerWrapper>
     </Wrapper>
   )
+}
+
+Navbar.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handleBurgerClick: PropTypes.func.isRequired,
 }
 
 export default Navbar
