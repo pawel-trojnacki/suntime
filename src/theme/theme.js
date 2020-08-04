@@ -14,4 +14,9 @@ export const theme = {
   xxs: '12px',
   headingFont: `'Alegreya', 'Arial', sans-serif`,
   bodyFont: `'Lato', 'Arial', sans-serif`,
+  lineHeightXl: 2,
+  lineHeightL: 1.8,
+  lineHeightM: 1.6,
+  lineHeightS: 1.4,
+  lineHeightXs: 1.2,
 };

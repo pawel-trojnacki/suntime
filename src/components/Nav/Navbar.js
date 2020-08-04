@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import Logo from '../../images/logo.svg';
+import LogoWrapper from '../LogoWrapper/LogoWrapper';
 import CartButton from './CartButton';
 import Burger from './Burger';
 
@@ -23,25 +24,18 @@ const InnerWrapper = styled.div`
   align-items: center;
 `;
 
-const LogoWrapper = styled.img`
-  width: 80px;
-  @media (min-width: 768px) {
-    width: 110px;
-  }
-`;
-
 const Panel = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
 `;
 
-const Navbar = ({open, handleBurgerClick}) => {
+const Navbar = ({ open, handleBurgerClick }) => {
   return (
     <Wrapper>
       <InnerWrapper>
         <a href="/">
-          <LogoWrapper src={Logo} />
+          <LogoWrapper src={Logo} alt="suntime.com" />
         </a>
         <Panel>
           <CartButton href="#">Card</CartButton>

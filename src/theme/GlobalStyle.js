@@ -1,4 +1,4 @@
-import {createGlobalStyle, css} from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`${css`
   *,
@@ -12,6 +12,8 @@ const GlobalStyle = createGlobalStyle`${css`
     font-size: 62.5%;
   }
   body {
+    margin: 0;
+    padding: 0;
     font-family: 'Lato', sans-serif;
     font-size: 1.6rem;
     font-weight: 300;
