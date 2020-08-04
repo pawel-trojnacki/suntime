@@ -7,19 +7,20 @@ const Button = styled.button`
   background-color: ${({ theme }) => theme.black};
   color: ${({ theme }) => theme.white};
   width: 120px;
-  padding: 15px;
+  padding: 14px;
   font-size: ${({ theme }) => theme.xxs};
-  font-weight: ${({ theme }) => theme.light};
+  font-weight: ${({ theme }) => theme.regular};
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 4px;
   transition: color 0.3s ease;
   cursor: pointer;
+  text-decoration: none;
 
   @media (min-width: 1024px) {
     width: 140px;
-    padding: 18px;
-    font-size: ${({ theme }) => theme.xs};
+    padding: 16px;
+    font-size: ${({ theme }) => theme.s};
   }
 
   &:hover,

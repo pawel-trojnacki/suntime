@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  max-width: 1280px;
+  max-width: ${({ theme }) => theme.maxWidth};
   padding: 20px;
   margin: 0 auto;
   display: flex;

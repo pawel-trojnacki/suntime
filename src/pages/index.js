@@ -1,6 +1,8 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout';
 
+import HeroSection from '../components/Headers/HeroSection';
+
 import Heading from '../components/Heading/Heading';
 import Paragraph from '../components/Paragraph/Paragraph';
 import Button from '../components/Button/Button';
@@ -8,6 +10,7 @@ import Button from '../components/Button/Button';
 const IndexPage = () => {
   return (
     <Layout>
+      <HeroSection />
       <br />
       <br />
       <br />

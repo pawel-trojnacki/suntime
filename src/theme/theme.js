@@ -6,6 +6,7 @@ export const theme = {
   lightGrey: '#aaa',
   regular: 400,
   light: 300,
+  xxxl: '64px',
   xxl: '44px',
   xl: '34px',
   l: '26px',
@@ -21,4 +22,5 @@ export const theme = {
   lineHeightM: 1.6,
   lineHeightS: 1.4,
   lineHeightXs: 1.2,
+  maxWidth: '1200px',
 };
