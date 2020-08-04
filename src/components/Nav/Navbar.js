@@ -1,9 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-import Logo from '../../images/logo.svg'
-import Burger from './Burger'
+import Logo from '../../images/logo.svg';
+import CartButton from './CartButton';
+import Burger from './Burger';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-`
+`;
 
 const InnerWrapper = styled.div`
   max-width: 1280px;
@@ -20,35 +21,20 @@ const InnerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 const LogoWrapper = styled.img`
   width: 80px;
   @media (min-width: 768px) {
     width: 110px;
   }
-`
+`;
 
 const Panel = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-`
-
-const CardButon = styled.a`
-  display: block;
-  margin-right: 25px;
-  text-decoration: none;
-  color: ${({theme}) => theme.black};
-  text-transform: uppercase;
-  font-weight: ${({theme}) => theme.regular};
-  font-size: ${({theme}) => theme.s};
-
-  @media (min-width: 768px) {
-    margin-right: 50px;
-    font-size: ${({theme}) => theme.m};
-  }
-`
+`;
 
 const Navbar = ({open, handleBurgerClick}) => {
   return (
@@ -58,17 +44,17 @@ const Navbar = ({open, handleBurgerClick}) => {
           <LogoWrapper src={Logo} />
         </a>
         <Panel>
-          <CardButon href="#">Card</CardButon>
+          <CartButton href="#">Card</CartButton>
           <Burger open={open} handleBurgerClick={handleBurgerClick} />
         </Panel>
       </InnerWrapper>
     </Wrapper>
-  )
-}
+  );
+};
 
 Navbar.propTypes = {
   open: PropTypes.bool.isRequired,
   handleBurgerClick: PropTypes.func.isRequired,
-}
+};
 
-export default Navbar
+export default Navbar;

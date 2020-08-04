@@ -1,7 +1,7 @@
-import HomeImage from '../images/nav-images/home.jpg'
-import ShopImage from '../images/nav-images/shop.jpg'
-import AboutImage from '../images/nav-images/about.jpg'
-import ContactImage from '../images/nav-images/contact.jpg'
+import HomeImage from '../images/nav-images/home.jpg';
+import ShopImage from '../images/nav-images/shop.jpg';
+import AboutImage from '../images/nav-images/about.jpg';
+import ContactImage from '../images/nav-images/contact.jpg';
 
 export const pages = [
   {
@@ -24,4 +24,4 @@ export const pages = [
     path: '/contact',
     image: ContactImage,
   },
-]
+];

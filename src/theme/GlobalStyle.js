@@ -1,4 +1,4 @@
-import {createGlobalStyle, css} from 'styled-components'
+import {createGlobalStyle, css} from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`${css`
   *,
@@ -17,5 +17,5 @@ const GlobalStyle = createGlobalStyle`${css`
     font-weight: 300;
   }
 `}
-`
-export default GlobalStyle
+`;
+export default GlobalStyle;

@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledButton = styled.button`
   position: relative;
@@ -47,7 +47,7 @@ const StyledButton = styled.button`
       }
     }
   }
-`
+`;
 
 const Burger = ({open, handleBurgerClick}) => {
   return (
@@ -56,12 +56,12 @@ const Burger = ({open, handleBurgerClick}) => {
       <span></span>
       <span></span>
     </StyledButton>
-  )
-}
+  );
+};
 
 Burger.propTypes = {
   open: PropTypes.bool.isRequired,
   handleBurgerClick: PropTypes.func.isRequired,
-}
+};
 
-export default Burger
+export default Burger;
