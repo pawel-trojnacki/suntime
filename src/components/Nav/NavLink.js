@@ -7,21 +7,21 @@ const NavLink = styled(AniLink)`
   margin: 1vh 0;
   padding: 1vh;
   text-decoration: none;
-  color: ${({theme, isactive}) =>
+  color: ${({ theme, isactive }) =>
     isactive === 'isActive' ? theme.black : theme.grey};
-  font-weight: ${({theme}) => theme.regular};
-  font-family: ${({theme}) => theme.headingFont};
-  font-size: ${({theme}) => theme.l};
-  transform: ${({open}) => (open ? 'translateY(0)' : 'translateY(50%)')};
-  opacity: ${({open}) => (open ? '1' : '0')};
+  font-weight: ${({ theme }) => theme.regular};
+  font-family: ${({ theme }) => theme.headingFont};
+  font-size: ${({ theme }) => theme.xl};
+  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(50%)')};
+  opacity: ${({ open }) => (open ? '1' : '0')};
   transition: transform 0.3s ease 0.7s, opacity 0.3 ease 0.7s, color 0.3s;
 
   @media (min-width: 1024px) {
-    font-size: ${({theme}) => theme.xl};
+    font-size: ${({ theme }) => theme.xxl};
   }
 
   &:hover {
-    color: ${({theme}) => theme.black};
+    color: ${({ theme }) => theme.black};
   }
 
   ::after {
@@ -33,8 +33,8 @@ const NavLink = styled(AniLink)`
     height: 100%;
     width: 100%;
     z-index: 3;
-    background-color: ${({theme}) => theme.beige};
-    transform: ${({open}) => (open ? 'scaleY(0)' : 'scaleY(1)')};
+    background-color: ${({ theme }) => theme.beige};
+    transform: ${({ open }) => (open ? 'scaleY(0)' : 'scaleY(1)')};
     transform-origin: top;
     transition: all 0.5s ease 0.7s;
   }

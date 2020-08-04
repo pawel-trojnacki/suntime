@@ -8,7 +8,7 @@ const Paraghraph = styled.p`
   line-height: ${({ theme }) => theme.lineHeightL};
   text-align: ${({ align }) => (align ? align : 'left')};
   @media (min-width: 768px) {
-    font-size: ${({ theme }) => theme.s};
+    font-size: ${({ theme }) => theme.sm};
   }
 
   ${({ small }) => {
@@ -18,7 +18,7 @@ const Paraghraph = styled.p`
         font-size: ${({ theme }) => theme.xxs};
         line-height: ${({ theme }) => theme.lineHeightM};
         @media (min-width: 768px) {
-          font-size: ${({ theme }) => theme.xs};
+          font-size: ${({ theme }) => theme.s};
         }
       `
     );
@@ -34,12 +34,14 @@ const Paraghraph = styled.p`
   }}
 `;
 
+const { bool, oneOf, oneOfType } = PropTypes;
+
 Paraghraph.propTypes = {
-  small: PropTypes.bool,
-  white: PropTypes.bool,
-  align: PropTypes.oneOf(['left', 'right', 'center', 'justify', null]),
-  margin: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  padding: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  small: bool,
+  white: bool,
+  align: oneOf(['left', 'right', 'center', 'justify', null]),
+  margin: oneOfType([PropTypes.string, PropTypes.bool]),
+  padding: oneOfType([PropTypes.string, PropTypes.bool]),
 };
 
 Paraghraph.defaultProps = {

@@ -1,6 +1,9 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout';
+
+import Heading from '../components/Heading/Heading';
 import Paragraph from '../components/Paragraph/Paragraph';
+import Button from '../components/Button/Button';
 
 const IndexPage = () => {
   return (
@@ -10,7 +13,17 @@ const IndexPage = () => {
       <br />
       <br />
       <br />
-      <h1>homepage</h1>
+      <Heading margin="60px 0" align="center">
+        homepage Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
+        ipsum dolor sit amet.
+      </Heading>
+      <Heading small>Lorem ipsum</Heading>
+      <Heading xsmall>Lorem ipsum</Heading>
+      <Heading secondary>About</Heading>
+      <Button>Contact</Button>
+
+      <Button big>Add to cart</Button>
+
       <Paragraph>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
         accusantium. Lorem ipsum dolor sit amet consectetur adipisicing elit.
