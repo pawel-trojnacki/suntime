@@ -14,10 +14,10 @@ module.exports = {
     author: `Paweł Trojnacki`,
     siteUrl: `https://suntime.netlify.app/`,
   },
-  proxy: {
-    prefix: 'https://www.datocms-assets.com/',
-    url: 'https://suntime.netlify.app/',
-  },
+  // proxy: {
+  //   prefix: 'https://www.datocms-assets.com/',
+  //   url: 'https://suntime.netlify.app/',
+  // },
   // developMiddleware: app => {
   //   app.use(
   //     '/.netlify/functions/',
@@ -44,6 +44,14 @@ module.exports = {
     `gatsby-plugin-playground`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-transition-link`,
+    {
+      resolve: ` gatsby-plugin-netlify-headers`,
+      options: {
+        allPageHeaders: {
+          "Access-Control-Allow-Origin = *"
+        }
+      }
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
