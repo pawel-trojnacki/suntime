@@ -15,7 +15,7 @@ module.exports = {
     siteUrl: `https://suntime.netlify.app/`,
   },
   proxy: {
-    prefix: '/',
+    prefix: 'https://www.datocms-assets.com/',
     url: 'https://suntime.netlify.app/',
   },
   // developMiddleware: app => {
