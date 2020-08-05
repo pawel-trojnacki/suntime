@@ -47,13 +47,14 @@ const StyledImg = styled(Img)`
   }
 `;
 
-const Overlay = styled.div`
+const OverlayImg = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
+  transform: scaleX(0);
   transform-origin: right;
   background-color: ${({ theme }) => theme.white};
 `;
@@ -64,7 +65,7 @@ const PriceWrapper = styled.div`
 
 const ProductCard = ({ name, fluid, price, promoPrice }) => {
   const animeImg = useRef(null);
-  const animeOverlay = useRef(null);
+  const animeImgOverlay = useRef(null);
   const animeHeading = useRef(null);
   const animePrice = useRef(null);
 
@@ -74,11 +75,17 @@ const ProductCard = ({ name, fluid, price, promoPrice }) => {
 
   useEffect(() => {
     tl.to(animeImg.current, { scaleX: 1, scaleY: 1, duration: 1 });
-    tl2.to(animeOverlay.current, {
-      scaleX: 0,
-      duration: 1,
-      ease: Power2.easeInOut,
-    });
+    tl2.fromTo(
+      animeImgOverlay.current,
+      {
+        scaleX: 1,
+      },
+      {
+        scaleX: 0,
+        duration: 1,
+        ease: Power2.easeInOut,
+      }
+    );
     tl3
       .fromTo(
         animeHeading.current,
@@ -99,7 +106,7 @@ const ProductCard = ({ name, fluid, price, promoPrice }) => {
 
     ScrollTrigger.create({
       animation: tl2,
-      trigger: animeOverlay.current,
+      trigger: animeImgOverlay.current,
       start: 'top center',
     });
 
@@ -138,7 +145,7 @@ const ProductCard = ({ name, fluid, price, promoPrice }) => {
             <StyledImg fluid={fluid} />
           </ImageInnerWrapper>
         </AniLink>
-        <Overlay ref={animeOverlay} />
+        <OverlayImg ref={animeImgOverlay} />
       </ImageWrapper>
       <Heading
         as="h3"
