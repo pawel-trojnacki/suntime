@@ -5,6 +5,7 @@ import gsap, { Power2 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import hoverEffect from 'hover-effect';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import Img from 'gatsby-image';
 
 import Heading from '../Heading/Heading';
 import { Price, PromoPrice } from './Price';
@@ -31,13 +32,16 @@ const ImageWrapper = styled.div`
   overflow: hidden;
 `;
 
-const StyledImg = styled.div`
+const ImageInnerWrapper = styled.div`
+  transform: scale(1.5);
+`;
+
+const StyledImg = styled(Img)`
   display: block;
   margin: 0 auto;
   height: 300px;
   object-fit: cover;
   object-position: top;
-  transform: scale(1.5);
   cursor: pointer;
   @media (min-width: 760px) {
     height: 400px;
@@ -48,7 +52,7 @@ const PriceWrapper = styled.div`
   text-align: center;
 `;
 
-const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
+const ProductCard = ({ name, fluid, price, promoPrice }) => {
   const animeImg = useRef(null);
   const animeOverlay = useRef(null);
   const animeHeading = useRef(null);
@@ -96,19 +100,19 @@ const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
     });
   }, [tl, tl2, tl3]);
 
-  useEffect(() => {
-    secondImage &&
-      new hoverEffect({
-        parent: animeImg.current,
-        image1: image,
-        image2: secondImage,
-        displacementImage:
-          'https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/heightMap.png',
-        intensity: 0.4,
-        speedIn: 0.8,
-        speedOut: 0.8,
-      });
-  }, [image, secondImage]);
+  //   useEffect(() => {
+  //     secondImage &&
+  //       new hoverEffect({
+  //         parent: animeImg.current,
+  //         image1: image,
+  //         image2: secondImage,
+  //         displacementImage:
+  //           'https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/heightMap.png',
+  //         intensity: 0.4,
+  //         speedIn: 0.8,
+  //         speedOut: 0.8,
+  //       });
+  //   }, [image, secondImage]);
 
   return (
     <Wrapper>
@@ -120,7 +124,9 @@ const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
           direction="bottom"
           duration={2}
         >
-          <StyledImg ref={animeImg} />
+          <ImageInnerWrapper ref={animeImg}>
+            <StyledImg fluid={fluid} />
+          </ImageInnerWrapper>
         </AniLink>
         <Overlay ref={animeOverlay} />
       </ImageWrapper>
@@ -145,8 +151,8 @@ const { string, number } = PropTypes;
 
 ProductCard.propTypes = {
   name: string.isRequired,
-  image: string.isRequired,
-  secondImage: string,
+  //   image: string.isRequired,
+  //   secondImage: string,
   price: number.isRequired,
   promoPrice: number,
 };
