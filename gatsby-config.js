@@ -13,7 +13,7 @@ module.exports = {
     app.use(
       '/.netlify/functions/',
       createProxyMiddleware({
-        target: 'http://localhost:9000',
+        target: 'http://localhost:8000',
         secure: false, // Do not reject self-signed certificates.
         pathRewrite: {
           '/.netlify/functions/': '',
