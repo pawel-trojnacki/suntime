@@ -15,6 +15,7 @@ module.exports = {
     siteUrl: `https://suntime.netlify.app/`,
   },
   proxy: {
+    prefix: '/',
     url: 'https://suntime.netlify.app/',
   },
   // developMiddleware: app => {
