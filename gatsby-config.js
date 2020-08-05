@@ -1,12 +1,13 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
     title: `Suntime`,
     description: `Simple e-commerce training project. JAM Stack: Gatsby.js, DatoCMS and Netlify, Stripe for payments, and some GSAP fun.`,
     author: `Paweł Trojnacki`,
+    siteUrl: `https://suntime.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -56,4 +57,4 @@ module.exports = {
       },
     },
   ],
-}
+};
