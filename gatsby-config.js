@@ -9,6 +9,18 @@ module.exports = {
     author: `Paweł Trojnacki`,
     siteUrl: `https://suntime.netlify.app/`,
   },
+  developMiddleware: app => {
+    app.use(
+      '/.netlify/functions/',
+      createProxyMiddleware({
+        target: 'http://localhost:9000',
+        secure: false, // Do not reject self-signed certificates.
+        pathRewrite: {
+          '/.netlify/functions/': '',
+        },
+      })
+    );
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
