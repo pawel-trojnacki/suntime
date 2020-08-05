@@ -1,48 +1,60 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+
 import Layout from '../components/Layout/Layout';
-
 import HeroSection from '../components/Headers/HeroSection';
-
 import Heading from '../components/Heading/Heading';
-import Paragraph from '../components/Paragraph/Paragraph';
-import Button from '../components/Button/Button';
+// import Paragraph from '../components/Paragraph/Paragraph';
+import SectionWrapper from '../components/SectionWrapper/SectionWrapper';
+import ProductList from '../components/Product/ProductList';
+import ProductCard from '../components/Product/ProductCard';
+// import Button from '../components/Button/Button';
 
 const IndexPage = () => {
+  const { allDatoCmsProduct } = useStaticQuery(
+    graphql`
+      query {
+        allDatoCmsProduct(
+          limit: 3
+          sort: { fields: [meta___publishedAt], order: DESC }
+        ) {
+          nodes {
+            name
+            price
+            promoprice
+            shape
+            frameColor
+            lensesColor
+            images {
+              url
+            }
+          }
+        }
+      }
+    `
+  );
   return (
     <Layout>
       <HeroSection />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <Heading margin="60px 0" align="center">
-        homepage Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
-        ipsum dolor sit amet.
-      </Heading>
-      <Heading small>Lorem ipsum</Heading>
-      <Heading xsmall>Lorem ipsum</Heading>
-      <Heading secondary>About</Heading>
-      <Button>Contact</Button>
-
-      <Button big>Add to cart</Button>
-
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
-        accusantium. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Atque excepturi vitae voluptates eligendi quidem, esse debitis,
-        molestiae quibusdam maiores reprehenderit laborum reiciendis mollitia
-        nisi! Fugit consectetur recusandae aliquid minima id nihil praesentium
-        maxime? Dolore magni voluptate error dolores illum in.
-      </Paragraph>
-      <Paragraph small align="justify">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
-        accusantium. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Atque excepturi vitae voluptates eligendi quidem, esse debitis,
-        molestiae quibusdam maiores reprehenderit laborum reiciendis mollitia
-        nisi! Fugit consectetur recusandae aliquid minima id nihil praesentium
-        maxime? Dolore magni voluptate error dolores illum in.
-      </Paragraph>
+      <SectionWrapper>
+        <Heading align="center">Recent products</Heading>
+        <ProductList>
+          {allDatoCmsProduct.nodes.map(
+            ({ name, images, price, promoprice }) => {
+              return (
+                <ProductCard
+                  key={name}
+                  image={images[0].url}
+                  secondImage={images[1].url}
+                  name={name}
+                  price={price}
+                  promoPrice={promoprice}
+                />
+              );
+            }
+          )}
+        </ProductList>
+      </SectionWrapper>
     </Layout>
   );
 };

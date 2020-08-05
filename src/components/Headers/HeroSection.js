@@ -7,6 +7,7 @@ import HeroImgMobile from '../../images/nav-images/home.jpg';
 import HeroImgDesktop from '../../images/header-images/homepage-hero.jpg';
 import Heading from '../Heading/Heading';
 import Button from '../Button/Button';
+import Overlay from '../Overlay/Overlay';
 
 const StyledHeading = styled(Heading)`
   font-size: ${({ theme }) => theme.xxl};
@@ -26,17 +27,6 @@ const Wrapper = styled.div`
   height: 100vh;
   overflow: hidden;
   position: relative;
-`;
-
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  transform-origin: right;
-  background-color: ${({ theme }) => theme.white};
 `;
 
 const Hero = styled.div`
@@ -93,7 +83,7 @@ export default function HeroSection() {
       .to(span1, { opacity: 1, y: 0 })
       .to(span2, { opacity: 1, y: 0, delay: 0 })
       .to(animeButton, { opacity: 1, y: 0, delay: 0 });
-  });
+  }, [tl, tl2]);
 
   return (
     <Wrapper>

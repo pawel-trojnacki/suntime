@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Heading = styled.h2`
   font-family: ${({ theme }) => theme.headingFont};
-  margin: ${({ margin }) => (margin ? margin : '30px 0')};
+  margin: ${({ margin }) => (margin ? margin : '40px 0')};
   text-align: ${({ align }) => (align ? align : 'left')};
   font-size: ${({ theme }) => theme.l};
   line-height: ${({ theme }) => theme.lineHeightM};

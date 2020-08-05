@@ -7,7 +7,7 @@ export const theme = {
   regular: 400,
   light: 300,
   xxxl: '64px',
-  xxl: '44px',
+  xxl: '50px',
   xl: '34px',
   l: '26px',
   m: '20px',
