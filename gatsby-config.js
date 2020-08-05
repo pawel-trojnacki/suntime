@@ -45,14 +45,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-transition-link`,
     {
-      resolve: ` gatsby-plugin-netlify-headers`,
-      options: {
-        allPageHeaders: {
-          "Access-Control-Allow-Origin = *"
-        }
-      }
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Suntime`,
@@ -83,6 +75,12 @@ module.exports = {
             variants: [`300`, `400`],
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-netlify-headers`,
+      options: {
+        allPageHeaders: ['Access-Control-Allow-Origin: *'],
       },
     },
   ],
