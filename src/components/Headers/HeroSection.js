@@ -7,7 +7,6 @@ import HeroImgMobile from '../../images/nav-images/home.jpg';
 import HeroImgDesktop from '../../images/header-images/homepage-hero.jpg';
 import Heading from '../Heading/Heading';
 import Button from '../Button/Button';
-import Overlay from '../Overlay/Overlay';
 
 const StyledHeading = styled(Heading)`
   font-size: ${({ theme }) => theme.xxl};
@@ -57,11 +56,21 @@ const StyledButton = styled(Button)`
   transform: translateY(25%);
 `;
 
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transform-origin: right;
+  background-color: ${({ theme }) => theme.white};
+`;
+
 export default function HeroSection() {
   const animeImg = useRef(null);
   const animeOverlay = useRef(null);
   const animeHeading = useRef(null);
-  //   const animeButton = useRef(null);
 
   const tl = gsap.timeline({ defaults: { duration: 1.4, delay: 0.5 } });
   const tl2 = gsap.timeline({ defaults: { duration: 0.6, delay: 2 } });

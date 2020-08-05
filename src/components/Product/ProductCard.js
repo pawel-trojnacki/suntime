@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import gsap, { Power2 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import hoverEffect from 'hover-effect';
+// import hoverEffect from 'hover-effect';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Img from 'gatsby-image';
 
 import Heading from '../Heading/Heading';
 import { Price, PromoPrice } from './Price';
-import Overlay from '../Overlay/Overlay';
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(ScrollTrigger);
@@ -46,6 +45,17 @@ const StyledImg = styled(Img)`
   @media (min-width: 760px) {
     height: 400px;
   }
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transform-origin: right;
+  background-color: ${({ theme }) => theme.white};
 `;
 
 const PriceWrapper = styled.div`
