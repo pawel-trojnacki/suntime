@@ -4,11 +4,9 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import HeroSection from '../components/Headers/HeroSection';
 import Heading from '../components/Heading/Heading';
-// import Paragraph from '../components/Paragraph/Paragraph';
 import SectionWrapper from '../components/SectionWrapper/SectionWrapper';
 import ProductList from '../components/Product/ProductList';
 import ProductCard from '../components/Product/ProductCard';
-// import Button from '../components/Button/Button';
 
 const IndexPage = () => {
   const { allDatoCmsProduct } = useStaticQuery(
@@ -26,8 +24,8 @@ const IndexPage = () => {
             frameColor
             lensesColor
             images {
-              fixed {
-                ...GatsbyDatoCmsFixed
+              fluid(maxWidth: 800) {
+                ...GatsbyDatoCmsFluid_noBase64
               }
             }
           }
@@ -46,8 +44,8 @@ const IndexPage = () => {
               return (
                 <ProductCard
                   key={name}
-                  image={images[0].fixed}
-                  secondImage={images[1].fixed}
+                  image={images[0].fluid}
+                  secondImage={images[1].fluid}
                   name={name}
                   price={price}
                   promoPrice={promoprice}

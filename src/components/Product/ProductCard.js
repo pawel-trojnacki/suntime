@@ -25,34 +25,38 @@ const Wrapper = styled.li`
 `;
 
 const ImageWrapper = styled.div`
+  margin: 0 auto;
   position: relative;
-  width: 100%;
+  width: 85%;
   overflow: hidden;
+  @media (min-width: 420px) {
+    width: 70%;
+  }
+  @media (min-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ImageInnerWrapper = styled.div`
   transform: scale(1.5);
   position: relative;
+  overflow: hidden;
+  height: 300px;
+  @media (min-width: 420px) {
+    height: 400px;
+  }
 
   div {
-    display: block;
-    margin: 0 auto;
-    height: 300px;
     cursor: pointer;
     transform-origin: right;
     transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out,
       filter 0.5s linear;
-    @media (min-width: 760px) {
-      height: 400px;
-    }
   }
 
   div:nth-child(2) {
     position: absolute !important;
     top: 0;
     left: 0;
-    height: 100%;
-    width: 100%;
     z-index: -1;
     transform-origin: left;
     transform: scaleX(1.3);
@@ -70,6 +74,18 @@ const ImageInnerWrapper = styled.div`
       opacity: 1;
       filter: blur(0);
     }
+  }
+`;
+
+const StyledImg = styled(Img)`
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+  object-position: top;
+  height: 350px;
+  width: 100%;
+  @media (min-width: 420px) {
+    height: 400px;
   }
 `;
 
@@ -145,21 +161,21 @@ const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
 
   return (
     <Wrapper>
-      <ImageWrapper>
-        <AniLink
-          to="/shop"
-          cover
-          bg={({ theme }) => theme.beige}
-          direction="bottom"
-          duration={2}
-        >
+      <AniLink
+        to="/shop"
+        cover
+        bg={({ theme }) => theme.beige}
+        direction="bottom"
+        duration={2}
+      >
+        <ImageWrapper>
           <ImageInnerWrapper ref={animeImg}>
-            <Img objectFit="cover" objectPosition="top" fixed={image} />
-            <Img objectFit="cover" objectPosition="top" fixed={secondImage} />
+            <StyledImg fluid={image} />
+            <StyledImg fluid={secondImage} />
           </ImageInnerWrapper>
-        </AniLink>
-        <OverlayImg ref={animeImgOverlay} />
-      </ImageWrapper>
+          <OverlayImg ref={animeImgOverlay} />
+        </ImageWrapper>
+      </AniLink>
       <Heading
         as="h3"
         xsmall
