@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import gsap, { Power2 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import hoverEffect from 'hover-effect';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Img from 'gatsby-image';
 
@@ -33,17 +32,44 @@ const ImageWrapper = styled.div`
 
 const ImageInnerWrapper = styled.div`
   transform: scale(1.5);
-`;
+  position: relative;
 
-const StyledImg = styled(Img)`
-  display: block;
-  margin: 0 auto;
-  height: 300px;
-  object-fit: cover;
-  object-position: top;
-  cursor: pointer;
-  @media (min-width: 760px) {
-    height: 400px;
+  div {
+    display: block;
+    margin: 0 auto;
+    height: 300px;
+    cursor: pointer;
+    transform-origin: right;
+    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out,
+      filter 0.5s linear;
+    @media (min-width: 760px) {
+      height: 400px;
+    }
+  }
+
+  div:nth-child(2) {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    transform-origin: left;
+    transform: scaleX(1.3);
+    filter: blur(5px);
+  }
+
+  &:hover {
+    div:nth-child(1) {
+      transform: scaleX(1.3);
+      opacity: 0;
+      filter: blur(5px);
+    }
+    div:nth-child(2) {
+      transform: scaleX(1);
+      opacity: 1;
+      filter: blur(0);
+    }
   }
 `;
 
@@ -63,7 +89,7 @@ const PriceWrapper = styled.div`
   text-align: center;
 `;
 
-const ProductCard = ({ name, fluid, price, promoPrice }) => {
+const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
   const animeImg = useRef(null);
   const animeImgOverlay = useRef(null);
   const animeHeading = useRef(null);
@@ -117,20 +143,6 @@ const ProductCard = ({ name, fluid, price, promoPrice }) => {
     });
   }, [tl, tl2, tl3]);
 
-  //   useEffect(() => {
-  //     secondImage &&
-  //       new hoverEffect({
-  //         parent: animeImg.current,
-  //         image1: image,
-  //         image2: secondImage,
-  //         displacementImage:
-  //           'https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/heightMap.png',
-  //         intensity: 0.4,
-  //         speedIn: 0.8,
-  //         speedOut: 0.8,
-  //       });
-  //   }, [image, secondImage]);
-
   return (
     <Wrapper>
       <ImageWrapper>
@@ -142,7 +154,8 @@ const ProductCard = ({ name, fluid, price, promoPrice }) => {
           duration={2}
         >
           <ImageInnerWrapper ref={animeImg}>
-            <StyledImg fluid={fluid} />
+            <Img objectFit="cover" objectPosition="top" fixed={image} />
+            <Img objectFit="cover" objectPosition="top" fixed={secondImage} />
           </ImageInnerWrapper>
         </AniLink>
         <OverlayImg ref={animeImgOverlay} />
@@ -164,20 +177,18 @@ const ProductCard = ({ name, fluid, price, promoPrice }) => {
   );
 };
 
-const { string, number } = PropTypes;
+const { string, number, object } = PropTypes;
 
 ProductCard.propTypes = {
   name: string.isRequired,
-  //   image: string.isRequired,
-  //   secondImage: string,
+  image: object.isRequired,
+  secondImage: object.isRequired,
   price: number.isRequired,
   promoPrice: number,
 };
 
 ProductCard.defaultProps = {
   name: 'Model Name',
-  image:
-    'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101065/112815953-no-image-available-icon-flat-vector.jpg?ver=6',
   price: 1000,
 };
 

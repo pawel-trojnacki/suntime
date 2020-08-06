@@ -2,11 +2,6 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-// const { createProxyMiddleware } = require('http-proxy-middleware'); //v1.x.x
-// Use implicit require for v0.x.x of 'http-proxy-middleware'
-// const proxy = require('http-proxy-middleware')
-// be sure to replace 'createProxyMiddleware' with 'proxy' where applicable
-
 module.exports = {
   siteMetadata: {
     title: `Suntime`,
@@ -14,22 +9,7 @@ module.exports = {
     author: `Paweł Trojnacki`,
     siteUrl: `https://suntime.netlify.app/`,
   },
-  // proxy: {
-  //   prefix: 'https://www.datocms-assets.com/',
-  //   url: 'https://suntime.netlify.app/',
-  // },
-  // developMiddleware: app => {
-  //   app.use(
-  //     '/.netlify/functions/',
-  //     createProxyMiddleware({
-  //       target: 'http://localhost:8000',
-  //       secure: false, // Do not reject self-signed certificates.
-  //       pathRewrite: {
-  //         '/.netlify/functions/': '',
-  //       },
-  //     })
-  //   );
-  // },
+
   plugins: [
     `gatsby-plugin-react-helmet`,
     {

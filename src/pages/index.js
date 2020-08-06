@@ -26,8 +26,8 @@ const IndexPage = () => {
             frameColor
             lensesColor
             images {
-              fluid(maxWidth: 800) {
-                ...GatsbyDatoCmsFluid
+              fixed {
+                ...GatsbyDatoCmsFixed
               }
             }
           }
@@ -46,8 +46,8 @@ const IndexPage = () => {
               return (
                 <ProductCard
                   key={name}
-                  fluid={images[0].fluid}
-                  // secondImage={images[1].url}
+                  image={images[0].fixed}
+                  secondImage={images[1].fixed}
                   name={name}
                   price={price}
                   promoPrice={promoprice}
