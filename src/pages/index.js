@@ -7,6 +7,9 @@ import Heading from '../components/Heading/Heading';
 import SectionWrapper from '../components/SectionWrapper/SectionWrapper';
 import ProductList from '../components/Product/ProductList';
 import ProductCard from '../components/Product/ProductCard';
+import ImageTransitionSection from '../components/ImageTransitionSection/ImageTransitionSection';
+import BeforeImg from '../images/transition-images/1.jpg';
+import AfterImg from '../images/transition-images/2.jpg';
 
 const IndexPage = () => {
   const { allDatoCmsProduct } = useStaticQuery(
@@ -55,6 +58,7 @@ const IndexPage = () => {
           )}
         </ProductList>
       </SectionWrapper>
+      <ImageTransitionSection beforeImg={BeforeImg} afterImg={AfterImg} />
     </Layout>
   );
 };

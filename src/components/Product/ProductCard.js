@@ -49,8 +49,7 @@ const ImageInnerWrapper = styled.div`
   div {
     cursor: pointer;
     transform-origin: right;
-    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out,
-      filter 0.5s linear;
+    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
   }
 
   div:nth-child(2) {
@@ -60,19 +59,16 @@ const ImageInnerWrapper = styled.div`
     z-index: -1;
     transform-origin: left;
     transform: scaleX(1.3);
-    filter: blur(5px);
   }
 
   &:hover {
     div:nth-child(1) {
       transform: scaleX(1.3);
       opacity: 0;
-      filter: blur(5px);
     }
     div:nth-child(2) {
       transform: scaleX(1);
       opacity: 1;
-      filter: blur(0);
     }
   }
 `;
