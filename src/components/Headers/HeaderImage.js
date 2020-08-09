@@ -7,7 +7,7 @@ const HeaderImageWrapper = styled.div`
   margin: 10vh 0 10vh;
   position: relative;
   width: 100%;
-  height: 70vh;
+  height: ${({ height }) => (height ? height : '70vh')};
   overflow: hidden;
 
   img {
@@ -34,7 +34,7 @@ const HeaderOverlay = styled.div`
   background-color: ${({ theme }) => theme.white};
 `;
 
-const HeaderImage = ({ image }) => {
+const HeaderImage = ({ image, height }) => {
   const animeHeaderImg = useRef(null);
   const animeHeaderOverlay = useRef(null);
 
@@ -52,7 +52,7 @@ const HeaderImage = ({ image }) => {
   }, [tl]);
 
   return (
-    <HeaderImageWrapper>
+    <HeaderImageWrapper height={height}>
       <img src={image} alt="lorem ipsum" ref={animeHeaderImg} />
       <HeaderOverlay ref={animeHeaderOverlay} />
     </HeaderImageWrapper>
@@ -61,6 +61,7 @@ const HeaderImage = ({ image }) => {
 
 HeaderImage.propTypes = {
   image: PropTypes.string,
+  height: PropTypes.string,
 };
 
 export default HeaderImage;

@@ -28,12 +28,7 @@ const BeforeImage = styled.div`
     position: absolute;
     top: 0;
     object-fit: cover;
-  }
-
-  @media (min-width: 1024px) {
-    img {
-      width: 90%;
-    }
+    object-position: top;
   }
 `;
 
@@ -48,7 +43,7 @@ const AfterImage = styled(BeforeImage)`
   }
 `;
 
-const ImageTransitionSection = ({ beforeImg, afterImg }) => {
+const ImageTransitionSection = ({ beforeImg, afterImg, fullScreen }) => {
   const animeTransitionSection = useRef(null);
   const animeAfterImage = useRef(null);
 
@@ -80,10 +75,7 @@ const ImageTransitionSection = ({ beforeImg, afterImg }) => {
     });
   }, []);
   return (
-    <TransitionSection
-      // className="transition-section"
-      ref={animeTransitionSection}
-    >
+    <TransitionSection ref={animeTransitionSection}>
       <BeforeImage className="before-image">
         <img src={beforeImg} alt="Lorem ipsum" />
       </BeforeImage>

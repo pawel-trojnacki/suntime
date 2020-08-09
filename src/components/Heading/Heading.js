@@ -7,6 +7,7 @@ const Heading = styled.h2`
   text-align: ${({ align }) => (align ? align : 'left')};
   font-size: ${({ theme }) => theme.l};
   line-height: ${({ theme }) => theme.lineHeightS};
+  font-weight: ${({ theme }) => theme.regular};
   @media (min-width: 768px) {
     font-size: ${({ theme }) => theme.xxl};
   }

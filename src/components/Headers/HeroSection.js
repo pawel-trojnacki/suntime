@@ -9,7 +9,7 @@ import Heading from '../Heading/Heading';
 import Button from '../Button/Button';
 
 const StyledHeading = styled(Heading)`
-  font-size: ${({ theme }) => theme.xxl};
+  font-size: ${({ theme }) => theme.xl};
   @media (min-width: 768px) {
     font-size: ${({ theme }) => theme.xxxl};
   }

@@ -15,8 +15,8 @@ import FlexWrapper from '../components/Wrappers/FlexWrapper';
 import ContentWrapper from '../components/Wrappers/ContentWrapper';
 import ImagesSection from '../components/ImagesSection/ImagesSection';
 import ImageTransitionSection from '../components/ImageTransitionSection/ImageTransitionSection';
-import BeforeImg from '../images/transition-images/1.jpg';
-import AfterImg from '../images/transition-images/2.jpg';
+import BeforeImg from '../images/transition-images/3.jpg';
+import AfterImg from '../images/transition-images/4.jpg';
 import FirstImage from '../images/section-images/homepage-1.jpg';
 import SecondImage from '../images/section-images/homepage-2.jpg';
 
