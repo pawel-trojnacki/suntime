@@ -1,13 +1,84 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 
 import Heading from '../Heading/Heading';
+
+const headingAnimation = keyframes`
+    0% {
+        transform: scaleY(1)
+    }
+    100% {
+        transform: scaleY(0)
+    }
+`;
 
 const HeaderWrapper = styled.header`
   max-width: 1024px;
   margin: 120px auto 80px;
   padding: 0 20px;
+
+  h1,
+  p {
+    position: relative;
+    ::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: ${({ theme }) => theme.white};
+      transform-origin: top;
+    }
+  }
+
+  h1 {
+    ::after {
+      animation: ${headingAnimation} 0.5s forwards ease-in-out 0.5s;
+    }
+  }
+
+  p {
+    ::after {
+      animation: ${headingAnimation} 1s forwards ease-in-out 0.5s;
+    }
+  }
+`;
+
+const StyledPageHeading = styled(Heading)`
+  span {
+    display: block;
+    position: relative;
+    ::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: ${({ theme }) => theme.white};
+      transform-origin: top;
+      animation: ${headingAnimation} 1s forwards ease-in-out 0.5s;
+    }
+
+    :nth-of-type(2) {
+      ::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: ${({ theme }) => theme.white};
+        transform-origin: top;
+        animation: ${headingAnimation} 1s forwards ease-in-out 1s;
+      }
+    }
+  }
 `;
 
 const PageHeader = ({ pageName, title, continuedTitle }) => {
@@ -17,17 +88,16 @@ const PageHeader = ({ pageName, title, continuedTitle }) => {
         {pageName}
       </Heading>
       {continuedTitle ? (
-        <Heading align="center" as="p" margin="0">
-          {title} <br /> {continuedTitle}
-        </Heading>
+        <StyledPageHeading align="center" as="p" margin="0">
+          <span>{title}</span>
+          <span>{continuedTitle}</span>
+          {/* {title} <br /> {continuedTitle} */}
+        </StyledPageHeading>
       ) : (
         <Heading align="center" as="p" margin="0">
           {title}
         </Heading>
       )}
-      {/* <Heading align="center" as="p" margin="0">
-        {continuedTitle ? `${title} <br/> ${continuedTitle}` : { title }}
-      </Heading> */}
     </HeaderWrapper>
   );
 };

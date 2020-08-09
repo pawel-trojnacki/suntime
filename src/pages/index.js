@@ -40,9 +40,6 @@ const IndexPage = () => {
             name
             price
             promoprice
-            shape
-            frameColor
-            lensesColor
             images {
               fluid(maxWidth: 800) {
                 ...GatsbyDatoCmsFluid_noBase64

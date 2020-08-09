@@ -20,7 +20,7 @@ const Button = styled.button`
   @media (min-width: 1024px) {
     width: 140px;
     padding: 16px;
-    font-size: ${({ theme }) => theme.s};
+    font-size: ${({ theme }) => theme.xs};
   }
 
   &:hover,

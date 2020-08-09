@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const ProductList = styled.ul`
   list-style: none;
-  padding: 0;
   list-style-type: none;
+  padding: 0;
   margin: 0;
   width: 100%;
   display: flex;
@@ -12,7 +12,8 @@ const ProductList = styled.ul`
 
   @media (min-width: 768px) {
     flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 `;
 

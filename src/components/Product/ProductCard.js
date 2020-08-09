@@ -20,7 +20,11 @@ const Wrapper = styled.li`
   padding: 10px;
 
   @media (min-width: 768px) {
-    width: 30%;
+    width: 33%;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 10px 20px;
   }
 `;
 
@@ -92,7 +96,7 @@ const OverlayImg = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
-  transform: scaleX(0);
+  /* transform: scaleX(0); */
   transform-origin: right;
   background-color: ${({ theme }) => theme.white};
 `;
@@ -112,7 +116,19 @@ const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
   const tl3 = gsap.timeline({ defaults: { duration: 1, delay: 0.5 } });
 
   useEffect(() => {
-    tl.to(animeImg.current, { scaleX: 1, scaleY: 1, duration: 1 });
+    tl.fromTo(
+      animeImg.current,
+      { scaleX: 1.5, scaleY: 1.5 },
+      { scaleX: 1, scaleY: 1, duration: 1 }
+    );
+    ScrollTrigger.create({
+      animation: tl,
+      trigger: animeImg.current,
+      start: 'top center',
+    });
+  }, [tl]);
+
+  useEffect(() => {
     tl2.fromTo(
       animeImgOverlay.current,
       {
@@ -124,6 +140,14 @@ const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
         ease: Power2.easeInOut,
       }
     );
+    ScrollTrigger.create({
+      animation: tl2,
+      trigger: animeImgOverlay.current,
+      start: 'top center',
+    });
+  }, [tl2]);
+
+  useEffect(() => {
     tl3
       .fromTo(
         animeHeading.current,
@@ -137,23 +161,11 @@ const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
       );
 
     ScrollTrigger.create({
-      animation: tl,
-      trigger: animeImg.current,
-      start: 'top center',
-    });
-
-    ScrollTrigger.create({
-      animation: tl2,
-      trigger: animeImgOverlay.current,
-      start: 'top center',
-    });
-
-    ScrollTrigger.create({
       animation: tl3,
       trigger: animeHeading.current,
       start: 'bottom bottom',
     });
-  }, [tl, tl2, tl3]);
+  }, [tl3]);
 
   return (
     <Wrapper>

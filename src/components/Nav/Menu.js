@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import gsap from 'gsap';
 
-import {pages} from '../../constants/pages';
+import { pages } from '../../constants/pages';
 import NavLink from './NavLink';
 import ImageWrapper from './ImageWrapper';
 import ListWrapper from './ListWrapper';
@@ -19,7 +19,7 @@ const ListItem = styled.li`
   list-style: none;
 `;
 
-const Menu = ({open}) => {
+const Menu = ({ open }) => {
   const pagePath =
     typeof window !== 'undefined' ? window.location.pathname : '';
 
@@ -54,7 +54,7 @@ const Menu = ({open}) => {
       </ImageWrapper>
       <ListWrapper open={open}>
         <ul>
-          {pages.map(({name, path, image}) => {
+          {pages.map(({ name, path, image }) => {
             return (
               <ListItem key={name}>
                 <NavLink
