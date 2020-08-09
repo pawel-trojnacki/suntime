@@ -12,7 +12,10 @@ if (typeof window !== `undefined`) {
 const TransitionSection = styled.div`
   position: relative;
   overflow-x: hidden;
-  margin: 10vh 0;
+  margin: 5vh 0;
+  @media (min-width: 1024px) {
+    margin: 7vh 0 10vh;
+  }
 `;
 
 const BeforeImage = styled.div`

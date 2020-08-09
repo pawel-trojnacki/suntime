@@ -6,7 +6,7 @@ const Heading = styled.h2`
   margin: ${({ margin }) => (margin ? margin : '40px 0')};
   text-align: ${({ align }) => (align ? align : 'left')};
   font-size: ${({ theme }) => theme.l};
-  line-height: ${({ theme }) => theme.lineHeightM};
+  line-height: ${({ theme }) => theme.lineHeightS};
   @media (min-width: 768px) {
     font-size: ${({ theme }) => theme.xxl};
   }
@@ -43,12 +43,13 @@ const Heading = styled.h2`
       css`
         font-family: ${({ theme }) => theme.bodyFont};
         font-weight: ${({ theme }) => theme.regular};
-        font-size: ${({ theme }) => theme.xs};
+        font-size: ${({ theme }) => theme.xxs};
         text-transform: uppercase;
-        letter-spacing: 16px;
+        letter-spacing: 12px;
         text-align: ${({ align }) => (align ? align : 'center')};
         @media (min-width: 768px) {
           font-size: ${({ theme }) => theme.s};
+          letter-spacing: 16px;
         }
       `
     );

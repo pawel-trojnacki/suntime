@@ -1,5 +1,6 @@
-import React from 'react'
-import Layout from '../components/Layout/Layout'
+import React from 'react';
+import Layout from '../components/Layout/Layout';
+import PageHeader from '../components/Headers/PageHeader';
 
 const ContactPage = () => {
   return (
@@ -15,7 +16,7 @@ const ContactPage = () => {
         accusantium.
       </p>
     </Layout>
-  )
-}
+  );
+};
 
-export default ContactPage
+export default ContactPage;

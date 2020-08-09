@@ -1,21 +1,17 @@
-import React from 'react'
-import Layout from '../components/Layout/Layout'
+import React from 'react';
+import Layout from '../components/Layout/Layout';
+import PageHeader from '../components/Headers/PageHeader';
 
 const AboutPage = () => {
   return (
     <Layout>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <h1>about</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
-        accusantium.
-      </p>
+      <PageHeader
+        pageName="About"
+        title="Express your style"
+        continuedTitle="in the rays of the sun"
+      />
     </Layout>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

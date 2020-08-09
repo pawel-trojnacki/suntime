@@ -1,21 +1,13 @@
-import React from 'react'
-import Layout from '../components/Layout/Layout'
+import React from 'react';
+import Layout from '../components/Layout/Layout';
+import PageHeader from '../components/Headers/PageHeader';
 
 const Shop = () => {
   return (
     <Layout>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <h1>shop</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
-        accusantium.
-      </p>
+      <PageHeader pageName="Shop" title="Choose your sunglasses" />
     </Layout>
-  )
-}
+  );
+};
 
-export default Shop
+export default Shop;
