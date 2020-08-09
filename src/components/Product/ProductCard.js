@@ -103,6 +103,11 @@ const OverlayImg = styled.div`
 
 const PriceWrapper = styled.div`
   text-align: center;
+  opacity: 0;
+`;
+
+const StyledHeading = styled(Heading)`
+  opacity: 0;
 `;
 
 const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
@@ -184,7 +189,7 @@ const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
           <OverlayImg ref={animeImgOverlay} />
         </ImageWrapper>
       </AniLink>
-      <Heading
+      <StyledHeading
         as="h3"
         xsmall
         margin="20px 0 0px 0"
@@ -192,7 +197,7 @@ const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
         ref={animeHeading}
       >
         {name}
-      </Heading>
+      </StyledHeading>
       <PriceWrapper ref={animePrice}>
         {promoPrice && <PromoPrice>{`$${promoPrice}`}</PromoPrice>}
         <Price>{`$${price}`}</Price>

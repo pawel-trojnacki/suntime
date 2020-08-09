@@ -1,13 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-if (typeof window !== `undefined`) {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.core.globals('ScrollTrigger', ScrollTrigger);
-}
+import gsap, { Power2 } from 'gsap';
 
 const HeaderImageWrapper = styled.div`
   margin: 10vh 0 10vh;
@@ -25,32 +19,48 @@ const HeaderImageWrapper = styled.div`
     position: absolute;
     left: 0%;
     top: 0;
+    transform: scale(1.5);
   }
+`;
+
+const HeaderOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transform-origin: right;
+  background-color: ${({ theme }) => theme.white};
 `;
 
 const HeaderImage = ({ image }) => {
   const animeHeaderImg = useRef(null);
+  const animeHeaderOverlay = useRef(null);
 
-  const tl = gsap.timeline();
+  const tl = gsap.timeline({ defaults: { duration: 1, delay: 1 } });
 
   useEffect(() => {
-    tl.to(animeHeaderImg.current, { scaleY: 1.3, scaleX: 1.3 });
-    ScrollTrigger.create({
-      animation: tl,
-      trigger: animeHeaderImg.current,
-      start: 'center center',
-      scrub: 1.5,
-      //   pin: true,
-      //   end: '1200',
-      toggleActions: 'restart none reverse none',
+    tl.to(animeHeaderImg.current, {
+      scaleY: 1,
+      scaleX: 1,
+    }).to(animeHeaderOverlay.current, {
+      scaleX: 0,
+      delay: -1,
+      ease: Power2.easeOut,
     });
   }, [tl]);
 
   return (
     <HeaderImageWrapper>
       <img src={image} alt="lorem ipsum" ref={animeHeaderImg} />
+      <HeaderOverlay ref={animeHeaderOverlay} />
     </HeaderImageWrapper>
   );
+};
+
+HeaderImage.propTypes = {
+  image: PropTypes.string,
 };
 
 export default HeaderImage;
