@@ -45,6 +45,7 @@ const Shop = () => {
         allDatoCmsProduct(sort: { fields: [meta___publishedAt], order: DESC }) {
           nodes {
             name
+            slug
             price
             promoprice
             sex
@@ -94,11 +95,12 @@ const Shop = () => {
         </FilterWrapper>
         <ProductList>
           {allDatoCmsProduct.nodes.map(
-            ({ name, images, price, promoprice, sex }) => {
+            ({ name, slug, images, price, promoprice, sex }) => {
               if (selected === 'all') {
                 return (
                   <ProductCard
                     key={name}
+                    slug={slug}
                     image={images[0].fluid}
                     secondImage={images[1].fluid}
                     name={name}

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ContentWrapper = styled.section`
+const ContentWrapper = styled.div`
   padding: 0 20px 40px;
 
   @media (min-width: 1024px) {

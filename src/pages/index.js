@@ -38,6 +38,7 @@ const IndexPage = () => {
         ) {
           nodes {
             name
+            slug
             price
             promoprice
             images {
@@ -57,10 +58,11 @@ const IndexPage = () => {
         <Heading align="center">Recent products</Heading>
         <ProductList>
           {allDatoCmsProduct.nodes.map(
-            ({ name, images, price, promoprice }) => {
+            ({ name, slug, images, price, promoprice }) => {
               return (
                 <ProductCard
                   key={name}
+                  slug={slug}
                   image={images[0].fluid}
                   secondImage={images[1].fluid}
                   name={name}

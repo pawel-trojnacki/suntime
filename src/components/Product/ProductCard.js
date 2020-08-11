@@ -110,7 +110,7 @@ const StyledHeading = styled(Heading)`
   opacity: 0;
 `;
 
-const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
+const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
   const animeImg = useRef(null);
   const animeImgOverlay = useRef(null);
   const animeHeading = useRef(null);
@@ -175,7 +175,7 @@ const ProductCard = ({ name, image, secondImage, price, promoPrice }) => {
   return (
     <Wrapper>
       <AniLink
-        to="/shop"
+        to={`/products/${slug}`}
         cover
         bg={({ theme }) => theme.beige}
         direction="bottom"
