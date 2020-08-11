@@ -96,7 +96,6 @@ const OverlayImg = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
-  /* transform: scaleX(0); */
   transform-origin: right;
   background-color: ${({ theme }) => theme.white};
 `;
@@ -111,6 +110,7 @@ const StyledHeading = styled(Heading)`
 `;
 
 const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
+  const animeWrapper = useRef(null);
   const animeImg = useRef(null);
   const animeImgOverlay = useRef(null);
   const animeHeading = useRef(null);
@@ -128,7 +128,7 @@ const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
     );
     ScrollTrigger.create({
       animation: tl,
-      trigger: animeImg.current,
+      trigger: animeWrapper.current,
       start: 'top center',
     });
   }, [tl]);
@@ -147,7 +147,7 @@ const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
     );
     ScrollTrigger.create({
       animation: tl2,
-      trigger: animeImgOverlay.current,
+      trigger: animeWrapper.current,
       start: 'top center',
     });
   }, [tl2]);
@@ -167,13 +167,13 @@ const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
 
     ScrollTrigger.create({
       animation: tl3,
-      trigger: animeHeading.current,
+      trigger: animeWrapper.current,
       start: 'bottom bottom',
     });
   }, [tl3]);
 
   return (
-    <Wrapper>
+    <Wrapper ref={animeWrapper}>
       <AniLink
         to={`/products/${slug}`}
         cover
