@@ -110,7 +110,7 @@ const ProductTemplate = ({
                 className="snipcart-add-item"
                 data-item-id={id}
                 data-item-price={promoprice ? promoprice : price}
-                data-item-url={`/products/${slug}`}
+                data-item-url={`https://suntime.netlify.app/products/${slug}`}
                 data-item-name={name}
               >
                 Add to cart
