@@ -24,6 +24,18 @@ const Paraghraph = styled.p`
     );
   }}
 
+${({ big }) => {
+  return (
+    big &&
+    css`
+      font-size: ${({ theme }) => theme.m};
+      @media (min-width: 768px) {
+        font-size: ${({ theme }) => theme.l};
+      }
+    `
+  );
+}}
+
   ${({ white }) => {
     return (
       white &&
@@ -38,6 +50,7 @@ const { bool, oneOf, oneOfType } = PropTypes;
 
 Paraghraph.propTypes = {
   small: bool,
+  big: bool,
   white: bool,
   align: oneOf(['left', 'right', 'center', 'justify', null]),
   margin: oneOfType([PropTypes.string, PropTypes.bool]),
@@ -46,6 +59,7 @@ Paraghraph.propTypes = {
 
 Paraghraph.defaultProps = {
   small: false,
+  big: false,
   white: false,
   align: null,
   margin: null,

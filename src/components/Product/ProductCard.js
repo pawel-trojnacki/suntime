@@ -199,8 +199,8 @@ const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
         {name}
       </StyledHeading>
       <PriceWrapper ref={animePrice}>
-        {promoPrice && <PromoPrice>{`$${promoPrice}`}</PromoPrice>}
-        <Price>{`$${price}`}</Price>
+        {promoPrice && <PromoPrice big>{`$${promoPrice}`}</PromoPrice>}
+        <Price big>{`$${price}`}</Price>
       </PriceWrapper>
     </Wrapper>
   );

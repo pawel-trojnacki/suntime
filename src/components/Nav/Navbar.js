@@ -38,7 +38,9 @@ const Navbar = ({ open, handleBurgerClick }) => {
           <LogoWrapper src={Logo} alt="suntime.com" />
         </a>
         <Panel>
-          <CartButton href="#">Card</CartButton>
+          <CartButton href="#" className="snipcart-checkout">
+            Cart
+          </CartButton>
           <Burger open={open} handleBurgerClick={handleBurgerClick} />
         </Panel>
       </InnerWrapper>

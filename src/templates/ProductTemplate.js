@@ -1,12 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Layout from '../components/Layout/Layout';
 import SectionWrapper from '../components/Wrappers/SectionWrapper';
+import { ImageGallery, ProductImg } from '../components/Product/Gallery';
+import StickySection from '../components/Product/StickySection';
+import Heading from '../components/Heading/Heading';
+import Paragraph from '../components/Paragraph/Paragraph';
+import { Price, PromoPrice } from '../components/Product/Price';
+import Button from '../components/Button/Button';
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(ScrollTrigger);
@@ -19,36 +24,28 @@ const StyledSectionWrapper = styled(SectionWrapper)`
   margin-bottom: 100vh;
 `;
 
-const ImageGallery = styled.div`
-  width: 50%;
+const PriceWrapper = styled.div`
+  display: flex;
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  font-weight: ${({ theme }) => theme.regular};
+`;
+
+const ActionsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const ProductImg = styled(Img)`
-  height: 800px;
-  object-fit: cover;
-  object-position: top;
-  margin-bottom: 20px;
-`;
-
-const StickySection = styled.div`
-  position: absolute;
-  height: 800px;
-  top: 0;
-  right: 0;
-  width: 50%;
-  /* height: 100vh; */
-  margin: 0;
-  padding: 30px;
+  align-items: flex-end;
 `;
 
 const ProductTemplate = ({
   data: {
     product: {
       slug,
+      id,
       name,
       price,
+      promoprice,
       desc,
       shape,
       frameColor,
@@ -84,14 +81,41 @@ const ProductTemplate = ({
             })}
           </ImageGallery>
           <StickySection ref={stickySection}>
-            <h1>{name}</h1>
-            <h2>{price}</h2>
-            <p>{desc}</p>
-            <p>{shape}</p>
-            <p>{frameColor}</p>
-            <p>{lensesColor}</p>
-            <p>{desc}</p>
-            <p>{desc}</p>
+            <Heading small as="h1">
+              {name}
+            </Heading>
+            <PriceWrapper>
+              {promoprice && (
+                <PromoPrice
+                  margin="0 20px 0 0"
+                  big
+                >{`$${promoprice}`}</PromoPrice>
+              )}
+              <Price margin="0 20px 0 0" big>{`$${price}`}</Price>
+            </PriceWrapper>
+            <Paragraph align="justify" margin="20px 0">
+              {desc}
+            </Paragraph>
+            <StyledParagraph small>{`shape: ${shape}`}</StyledParagraph>
+            <StyledParagraph
+              small
+            >{`lenses color: ${lensesColor}`}</StyledParagraph>
+            <StyledParagraph
+              small
+            >{`frame color: ${frameColor}`}</StyledParagraph>
+            <ActionsWrapper>
+              <Paragraph big>Secect size</Paragraph>
+              <Button
+                big
+                className="snipcart-add-item"
+                data-item-id={id}
+                data-item-price={promoprice ? promoprice : price}
+                data-item-url={`/products/${slug}`}
+                data-item-name={name}
+              >
+                Add to cart
+              </Button>
+            </ActionsWrapper>
           </StickySection>
         </StyledSectionWrapper>
       </main>
@@ -102,14 +126,16 @@ const ProductTemplate = ({
 export const query = graphql`
   query GetProduct($slug: String) {
     product: datoCmsProduct(slug: { eq: $slug }) {
+      slug
       id
       name
+      price
+      promoprice
       slug
       desc
       shape
       frameColor
       lensesColor
-      price
       images {
         fluid(maxWidth: 800) {
           ...GatsbyDatoCmsFluid_noBase64
