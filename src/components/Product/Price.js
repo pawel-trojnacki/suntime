@@ -13,7 +13,7 @@ export const Price = styled(Paragraph)`
     `}
 `;
 
-export const PromoPrice = styled(Price)`
+export const OldPrice = styled(Price)`
   color: ${({ theme }) => theme.grey};
   text-decoration: line-through;
 `;

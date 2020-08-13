@@ -10,7 +10,7 @@ import { ImageGallery, ProductImg } from '../components/Product/Gallery';
 import StickySection from '../components/Product/StickySection';
 import Heading from '../components/Heading/Heading';
 import Paragraph from '../components/Paragraph/Paragraph';
-import { Price, PromoPrice } from '../components/Product/Price';
+import { Price, OldPrice } from '../components/Product/Price';
 import Button from '../components/Button/Button';
 
 if (typeof window !== `undefined`) {
@@ -86,12 +86,11 @@ const ProductTemplate = ({
             </Heading>
             <PriceWrapper>
               {promoprice && (
-                <PromoPrice
-                  margin="0 20px 0 0"
-                  big
-                >{`$${promoprice}`}</PromoPrice>
+                <OldPrice margin="0 20px 0 0" big>{`$${price}`}</OldPrice>
               )}
-              <Price margin="0 20px 0 0" big>{`$${price}`}</Price>
+              <Price margin="0 20px 0 0" big>{`$${
+                promoprice ? promoprice : price
+              }`}</Price>
             </PriceWrapper>
             <Paragraph align="justify" margin="20px 0">
               {desc}
@@ -104,7 +103,7 @@ const ProductTemplate = ({
               small
             >{`frame color: ${frameColor}`}</StyledParagraph>
             <ActionsWrapper>
-              <Paragraph big>Secect size</Paragraph>
+              <Paragraph big>Select size</Paragraph>
               <Button
                 big
                 className="snipcart-add-item"

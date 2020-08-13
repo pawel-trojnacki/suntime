@@ -7,7 +7,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Img from 'gatsby-image';
 
 import Heading from '../Heading/Heading';
-import { Price, PromoPrice } from './Price';
+import { Price, OldPrice } from './Price';
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(ScrollTrigger);
@@ -199,8 +199,8 @@ const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
         {name}
       </StyledHeading>
       <PriceWrapper ref={animePrice}>
-        {promoPrice && <PromoPrice big>{`$${promoPrice}`}</PromoPrice>}
-        <Price big>{`$${price}`}</Price>
+        {promoPrice && <OldPrice big>{`$${price}`}</OldPrice>}
+        <Price big>{`$${promoPrice ? promoPrice : price}`}</Price>
       </PriceWrapper>
     </Wrapper>
   );

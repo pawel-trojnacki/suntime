@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
+import '../../css/snipcart.css';
 
 import GlobalStyle from '../../theme/GlobalStyle';
 import { theme } from '../../theme/theme';

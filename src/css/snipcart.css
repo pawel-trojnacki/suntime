@@ -1,0 +1,105 @@
+/* fonts */
+.snip-layout h2,
+.snip-layout p.snip-step__label {
+  font-family: 'Alegreya', Arial, Helvetica, sans-serif !important;
+  font-weight: normal !important;
+}
+
+.snip-layout p.snip-step__label {
+  font-size: 14px !important;
+}
+
+.snip-layout dd,
+.snip-layout div,
+.snip-layout dl,
+.snip-layout dt,
+.snip-layout em,
+.snip-layout form,
+.snip-layout h1,
+.snip-layout h3 h4,
+.snip-layout img,
+.snip-layout label,
+.snip-layout li,
+.snip-layout ol,
+.snip-layout p,
+.snip-layout small,
+.snip-layout span,
+.snip-layout strong,
+.snip-layout table,
+.snip-layout tbody,
+.snip-layout ul,
+.snip-layout .snip-btn,
+h2.snip-static__title {
+  font-family: 'Lato', Arial, Helvetica, sans-serif !important;
+  font-weight: 300 !important;
+}
+
+/* colors */
+.snip-layout .snip-product__empty {
+  color: #000;
+}
+
+#snipcart-discounts
+  .snip-actions
+  .snip-actions__link.snip-actions__link--small.snip-actions__link--right {
+  font-weight: 400 !important;
+  color: #000;
+}
+
+.snip-layout .snip-ico--close:before {
+  color: #000 !important;
+}
+
+.snip-layout .snip-header,
+.snip-layout .snip-header__total {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.snip-layout .snip-quantity-trigger__btn {
+  background-color: #000 !important;
+}
+
+.snip-layout .snip-quantity-trigger__btn:before {
+  color: #fff !important;
+}
+
+/* product empty*/
+.snip-layout .snip-product__empty {
+  /* text-transform: none !important; */
+  font-size: 16px !important;
+  padding: 50px 20px !important;
+  line-height: 1.6;
+}
+/* buttons */
+.snip-layout .snip-btn {
+  letter-spacing: 3px;
+  border-radius: 0 !important;
+  border: 1px solid #000 !important;
+}
+
+.snip-layout .snip-btn--highlight {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.snip-layout .snip-btn--left {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+/* steps */
+.snip-layout .snip-step__item {
+  background-color: #fff !important;
+  border: none !important;
+}
+
+/* global loader */
+.snip-layout .snip-loader--bar:before {
+  background-color: #ffe0c5 !important;
+}
+
+/* remove "powered by Snipcart */
+.snip-layout .snip-footer {
+  display: none;
+}
