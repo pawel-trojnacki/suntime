@@ -43,7 +43,7 @@ const AfterImage = styled(BeforeImage)`
   }
 `;
 
-const ImageTransitionSection = ({ beforeImg, afterImg, fullScreen }) => {
+const ImageTransitionSection = ({ beforeImg, afterImg }) => {
   const animeTransitionSection = useRef(null);
   const animeAfterImage = useRef(null);
 

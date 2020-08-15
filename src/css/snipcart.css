@@ -95,8 +95,12 @@ h2.snip-static__title {
 }
 
 /* global loader */
+.snip-layout .snip-loader--bar {
+  background-color: #fff !important;
+}
+
 .snip-layout .snip-loader--bar:before {
-  background-color: #ffe0c5 !important;
+  background-color: #000 !important;
 }
 
 /* remove "powered by Snipcart */

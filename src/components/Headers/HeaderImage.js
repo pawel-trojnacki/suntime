@@ -4,11 +4,15 @@ import PropTypes from 'prop-types';
 import gsap, { Power2 } from 'gsap';
 
 const HeaderImageWrapper = styled.div`
-  margin: 10vh 0 10vh;
+  margin: ${({ margin }) => (margin ? margin : '10vh 0 10vh')};
   position: relative;
   width: 100%;
   height: ${({ height }) => (height ? height : '70vh')};
   overflow: hidden;
+
+  @media (min-width: 1024px) {
+    width: ${({ width }) => (width ? width : '100%')};
+  }
 
   img {
     display: block;
@@ -34,7 +38,7 @@ const HeaderOverlay = styled.div`
   background-color: ${({ theme }) => theme.white};
 `;
 
-const HeaderImage = ({ image, height }) => {
+const HeaderImage = ({ image, height, width, margin }) => {
   const animeHeaderImg = useRef(null);
   const animeHeaderOverlay = useRef(null);
 
@@ -52,16 +56,20 @@ const HeaderImage = ({ image, height }) => {
   }, [tl]);
 
   return (
-    <HeaderImageWrapper height={height}>
+    <HeaderImageWrapper height={height} width={width} margin={margin}>
       <img src={image} alt="lorem ipsum" ref={animeHeaderImg} />
       <HeaderOverlay ref={animeHeaderOverlay} />
     </HeaderImageWrapper>
   );
 };
 
+const { string } = PropTypes;
+
 HeaderImage.propTypes = {
-  image: PropTypes.string,
-  height: PropTypes.string,
+  image: string,
+  height: string,
+  width: string,
+  margin: string,
 };
 
 export default HeaderImage;

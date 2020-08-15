@@ -30,7 +30,7 @@ const AboutPage = () => {
           firstImg={FirstImage}
           secondImg={SecondImage}
         />
-        <ContentWrapper position="right">
+        <ContentWrapper>
           <Heading>Cool design and best quality</Heading>
           <Paragraph align="justify">
             Before they sold out adaptogen artisan, subway tile unicorn

@@ -22,20 +22,31 @@ const StyledSectionWrapper = styled(SectionWrapper)`
   position: relative;
   margin-top: 10vh;
   margin-bottom: 100vh;
+  @media (max-width: 1023px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `;
 
-const PriceWrapper = styled.div`
-  display: flex;
+const DetailsWrapper = styled.div`
+  margin: 20px 0;
+  @media (min-width: 1024px) {
+    margin: 40px 0;
+  }
 `;
 
-const StyledParagraph = styled(Paragraph)`
+const DetailsParahraph = styled(Paragraph)`
   font-weight: ${({ theme }) => theme.regular};
 `;
 
-const ActionsWrapper = styled.div`
+const ButtonWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: 20px;
+
+  @media (min-width: 1024px) {
+    margin-top: 60px;
+  }
 `;
 
 const ProductTemplate = ({
@@ -61,14 +72,16 @@ const ProductTemplate = ({
     const wrapHeight =
       stickySectionWrap.current.offsetHeight -
       (stickySection.current.offsetHeight - 130);
-    gsap.to(stickySectionWrap.current, {
-      scrollTrigger: {
-        trigger: stickySection.current,
-        pin: true,
-        start: 'center center',
-        end: wrapHeight,
-      },
-    });
+    if (window.screen.width >= 1024) {
+      gsap.to(stickySectionWrap.current, {
+        scrollTrigger: {
+          trigger: stickySection.current,
+          pin: true,
+          start: 'center center',
+          end: wrapHeight,
+        },
+      });
+    }
   });
 
   return (
@@ -81,29 +94,28 @@ const ProductTemplate = ({
             })}
           </ImageGallery>
           <StickySection ref={stickySection}>
-            <Heading small as="h1">
+            <Heading as="h1" margin="20px 0">
               {name}
             </Heading>
-            <PriceWrapper>
-              {promoprice && (
-                <OldPrice margin="0 20px 0 0" big>{`$${price}`}</OldPrice>
-              )}
-              <Price margin="0 20px 0 0" big>{`$${
-                promoprice ? promoprice : price
-              }`}</Price>
-            </PriceWrapper>
+            {promoprice && (
+              <OldPrice margin="0 20px 0 0" big>{`$${price}`}</OldPrice>
+            )}
+            <Price margin="0 20px 0 0" big>{`$${
+              promoprice ? promoprice : price
+            }`}</Price>
             <Paragraph align="justify" margin="20px 0">
               {desc}
             </Paragraph>
-            <StyledParagraph small>{`shape: ${shape}`}</StyledParagraph>
-            <StyledParagraph
-              small
-            >{`lenses color: ${lensesColor}`}</StyledParagraph>
-            <StyledParagraph
-              small
-            >{`frame color: ${frameColor}`}</StyledParagraph>
-            <ActionsWrapper>
-              <Paragraph big>Select size</Paragraph>
+            <DetailsWrapper>
+              <DetailsParahraph small>{`shape: ${shape}`}</DetailsParahraph>
+              <DetailsParahraph
+                small
+              >{`lenses color: ${lensesColor}`}</DetailsParahraph>
+              <DetailsParahraph
+                small
+              >{`frame color: ${frameColor}`}</DetailsParahraph>
+            </DetailsWrapper>
+            <ButtonWrapper>
               <Button
                 big
                 className="snipcart-add-item"
@@ -114,7 +126,7 @@ const ProductTemplate = ({
               >
                 Add to cart
               </Button>
-            </ActionsWrapper>
+            </ButtonWrapper>
           </StickySection>
         </StyledSectionWrapper>
       </main>

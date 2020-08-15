@@ -10,12 +10,14 @@ import Button from '../components/Button/Button';
 import SectionWrapper from '../components/Wrappers/SectionWrapper';
 import ProductList from '../components/Product/ProductList';
 import ProductCard from '../components/Product/ProductCard';
+import { filters } from '../constants/filters';
+
+const allValue = filters[0];
 
 const FilterWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 0 auto 20px;
-  /* margin-bottom: 60vh; */
 `;
 
 const StyledButton = styled(Button)`
@@ -60,43 +62,31 @@ const Shop = () => {
     `
   );
 
-  const [selected, setSelected] = useState('all');
+  const [selected, setSelected] = useState(allValue);
 
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
   return (
     <Layout>
       <PageHeader pageName="Shop" title="Choose your sunglasses" />
       <HeaderImage image={Image} />
       <SectionWrapper>
         <FilterWrapper>
-          <StyledButton
-            option="all"
-            selected={selected}
-            onClick={() => setSelected('all')}
-          >
-            All
-          </StyledButton>
-          <StyledButton
-            option="man"
-            selected={selected}
-            onClick={() => setSelected('man')}
-          >
-            Man
-          </StyledButton>
-          <StyledButton
-            option="woman"
-            selected={selected}
-            onClick={() => setSelected('woman')}
-          >
-            Woman
-          </StyledButton>
+          {filters.map(filter => {
+            return (
+              <StyledButton
+                key={filter}
+                option={filter}
+                selected={selected}
+                onClick={() => setSelected(filter)}
+              >
+                {filter}
+              </StyledButton>
+            );
+          })}
         </FilterWrapper>
         <ProductList>
           {allDatoCmsProduct.nodes.map(
             ({ name, slug, images, price, promoprice, sex }) => {
-              if (selected === 'all') {
+              if (selected === allValue) {
                 return (
                   <ProductCard
                     key={name}
