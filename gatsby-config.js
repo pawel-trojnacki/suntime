@@ -65,6 +65,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-mailchimp`,
+      options: {
+        endpoint: process.env.MAILCHIMP_ENDPOINT,
+      },
+    },
+    {
       resolve: `gatsby-plugin-netlify-headers`,
       options: {
         allPageHeaders: ['Access-Control-Allow-Origin: *'],

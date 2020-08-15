@@ -1,12 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import gsap from 'gsap';
+import addToMailchimp from 'gatsby-plugin-mailchimp';
 
 import Field from './Field';
 import Label from './Label';
 import Input from './Input';
 import Button from '../Button/Button';
 import Paragraph from '../Paragraph/Paragraph';
+import { validate } from '../../helpers/validate';
 
 const StyledForm = styled.form`
   margin: 20px 0;
@@ -33,31 +36,6 @@ const ErrorMessage = styled(Paragraph)`
   color: red;
 `;
 
-const validate = (form, newsletter) => {
-  if (!form._replyto) {
-    return 'Email is required';
-  } else if (
-    form._replyto.length < 6 ||
-    form._replyto.indexOf('@') < 0 ||
-    form._replyto.indexOf('@') === 0 ||
-    form._replyto.indexOf('@') === form._replyto.length - 1 ||
-    form._replyto.indexOf('.') < 0 ||
-    form._replyto.indexOf('.') === form._replyto.length - 1
-  ) {
-    return 'Incorrect email';
-  }
-
-  if (!newsletter) {
-    if (!form.message) {
-      return 'Message is required';
-    } else if (form.message.length < 5) {
-      return 'Message is to short';
-    }
-  }
-
-  return null;
-};
-
 const Form = ({ newsletter, formAction }) => {
   const animeForm = useRef(null);
 
@@ -66,6 +44,8 @@ const Form = ({ newsletter, formAction }) => {
     _replyto: '',
     message: '',
   });
+
+  const [result, setResult] = useState(null);
 
   const updateForm = e => {
     setForm({
@@ -81,6 +61,15 @@ const Form = ({ newsletter, formAction }) => {
       e.preventDefault();
       setError(errorMessage);
       return;
+    }
+
+    if (newsletter) {
+      e.preventDefault();
+      const newsletterResult = await addToMailchimp(form._replyto);
+      // setResult(newsletterResult.msg);
+      setResult(newsletterResult.result);
+
+      console.log(result);
     }
   };
 
@@ -101,12 +90,12 @@ const Form = ({ newsletter, formAction }) => {
       ref={animeForm}
     >
       <Field>
-        <Label for="email">Email</Label>
+        <Label htmlFor="email">Email</Label>
         <Input type="email" id="email" name="_replyto" onChange={updateForm} />
       </Field>
       {!newsletter && (
         <Field>
-          <Label for="message">Your message</Label>
+          <Label htmlFor="message">Your message</Label>
           <TextArea
             as="textarea"
             name="message"
@@ -124,8 +113,22 @@ const Form = ({ newsletter, formAction }) => {
           {error}
         </ErrorMessage>
       )}
+      {result && (
+        <Paragraph align="right">
+          {result === 'success'
+            ? 'Thanks for subscribing!'
+            : 'You already subscribe our list.'}
+        </Paragraph>
+      )}
     </StyledForm>
   );
+};
+
+const { bool, string } = PropTypes;
+
+Form.propTypes = {
+  newsletter: bool,
+  formAction: string,
 };
 
 export default Form;

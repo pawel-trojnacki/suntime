@@ -16,7 +16,10 @@ const ContactPage = () => {
       <FlexWrapper>
         <HeaderImage image={Image} width="50%" height="80vh" margin="0" />
         <ContentWrapper position="right">
-          <Form formAction="https://formspree.io/mdowjvky" />
+          <Form
+            formAction="https://formspree.io/mdowjvky"
+            // newsletter
+          />
         </ContentWrapper>
       </FlexWrapper>
     </Layout>
