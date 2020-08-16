@@ -53,8 +53,8 @@ const Menu = ({ open }) => {
   return (
     <>
       <ImageWrapper open={open}>
-        {pages.map(({ image }) => (
-          <Image src={image} style={{ zIndex: -1 }} />
+        {pages.map(({ image, name }) => (
+          <Image key={name} src={image} style={{ zIndex: -1 }} />
         ))}
         <Image src={featuredImg} alt="menu image" open={open} ref={animeImg} />
       </ImageWrapper>
