@@ -20,9 +20,6 @@ const IconWrapper = styled.div`
   height: 40px;
   width: 50px;
   margin: 20px auto 30px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 `;
 
 const StyledImg = styled.img`
@@ -49,7 +46,6 @@ const ContactPage = () => {
               <IconWrapper>
                 <StyledImg src={icon} alt={title} />
               </IconWrapper>
-              {/* <StyledImg src={icon} /> */}
               {details.map(element => (
                 <Paragraph align="center" key={element}>
                   {element}

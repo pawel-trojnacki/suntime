@@ -34,12 +34,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Suntime`,
+        name: `Suntime.com`,
         short_name: `Suntime`,
         start_url: `/`,
         background_color: `#ffe0c5`,
         theme_color: `#ffe0c5`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `src/images/favicon.png`,
       },
     },
@@ -64,6 +64,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-mailchimp`,
       options: {
