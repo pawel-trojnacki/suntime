@@ -17,6 +17,9 @@ import Heading from '../components/Heading/Heading';
 import Paragraph from '../components/Paragraph/Paragraph';
 import { Price, OldPrice } from '../components/Product/Price';
 import Button from '../components/Button/Button';
+import ColumnList from '../components/Column/ColumnList';
+import ProductCard from '../components/Product/ProductCard';
+import SEO from '../components/SEO/seo';
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(ScrollTrigger);
@@ -26,7 +29,7 @@ if (typeof window !== `undefined`) {
 const StyledSectionWrapper = styled(SectionWrapper)`
   position: relative;
   margin-top: 10vh;
-  margin-bottom: 100vh;
+  margin-bottom: 10vh;
   @media (max-width: 1023px) {
     display: flex;
     flex-direction: column-reverse;
@@ -67,6 +70,7 @@ const ProductTemplate = ({
       frameColor,
       lensesColor,
       images,
+      related,
     },
   },
 }) => {
@@ -135,6 +139,7 @@ const ProductTemplate = ({
 
   return (
     <Layout>
+      <SEO title={name} />
       <main>
         <StyledSectionWrapper ref={stickySectionWrap}>
           <ImageGallery ref={animeImages}>
@@ -183,6 +188,33 @@ const ProductTemplate = ({
             </ButtonWrapper>
           </StickySection>
         </StyledSectionWrapper>
+
+        {related ? (
+          <SectionWrapper>
+            <Heading align="center">You may also like</Heading>
+            <ColumnList>
+              {related.map(
+                ({
+                  relatedName,
+                  relatedSlug,
+                  relatedImages,
+                  relatedPrice,
+                  relatedPromoPrice,
+                }) => (
+                  <ProductCard
+                    key={relatedName}
+                    name={relatedName}
+                    slug={relatedSlug}
+                    image={relatedImages[0].fluid}
+                    secondImage={relatedImages[1].fluid}
+                    price={relatedPrice}
+                    promoPrice={relatedPromoPrice}
+                  />
+                )
+              )}
+            </ColumnList>
+          </SectionWrapper>
+        ) : null}
       </main>
     </Layout>
   );
@@ -205,6 +237,17 @@ export const query = graphql`
         fluid(maxWidth: 800) {
           ...GatsbyDatoCmsFluid_noBase64
         }
+      }
+      related {
+        relatedName: name
+        relatedSlug: slug
+        relatedImages: images {
+          fluid(maxWidth: 800) {
+            ...GatsbyDatoCmsFluid_noBase64
+          }
+        }
+        relatedPrice: price
+        relatedPromoPrice: promoprice
       }
     }
   }

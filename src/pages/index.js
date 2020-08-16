@@ -19,6 +19,7 @@ import BeforeImg from '../images/transition-images/3.jpg';
 import AfterImg from '../images/transition-images/4.jpg';
 import FirstImage from '../images/section-images/homepage-1.jpg';
 import SecondImage from '../images/section-images/homepage-2.jpg';
+import SEO from '../components/SEO/seo';
 
 const StyledButton = styled(Button)`
   margin: 40px 0 40px auto;
@@ -53,6 +54,7 @@ const IndexPage = () => {
   );
   return (
     <Layout>
+      <SEO title="Home" />
       <HeroSection />
       <SectionWrapper>
         <Heading align="center">Recent products</Heading>

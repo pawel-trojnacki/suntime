@@ -10,6 +10,8 @@ import Button from '../components/Button/Button';
 import SectionWrapper from '../components/Wrappers/SectionWrapper';
 import ColumnList from '../components/Column/ColumnList';
 import ProductCard from '../components/Product/ProductCard';
+
+import SEO from '../components/SEO/seo';
 import { filters } from '../constants/filters';
 
 const allValue = filters[0];
@@ -66,6 +68,7 @@ const Shop = () => {
 
   return (
     <Layout>
+      <SEO title="Shop" />
       <PageHeader pageName="Shop" title="Choose your sunglasses" />
       <HeaderImage image={Image} />
       <SectionWrapper>

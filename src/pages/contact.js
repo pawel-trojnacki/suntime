@@ -13,6 +13,7 @@ import ColumnList from '../components/Column/ColumnList';
 import Column from '../components/Column/Column';
 import Heading from '../components/Heading/Heading';
 import Paragraph from '../components/Paragraph/Paragraph';
+import SEO from '../components/SEO/seo';
 
 import { contactDetails } from '../constants/contactDetails';
 
@@ -31,6 +32,7 @@ const StyledImg = styled.img`
 const ContactPage = () => {
   return (
     <Layout>
+      <SEO title="Contact" />
       <PageHeader pageName="Contact" title="Say hello to Suntime" />
       <FlexWrapper as="div">
         <HeaderImage image={Image} width="50%" height="80vh" margin="0" />

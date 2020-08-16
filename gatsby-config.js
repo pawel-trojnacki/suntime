@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Suntime`,
-    description: `Simple e-commerce training project. JAM Stack: Gatsby.js, DatoCMS and Netlify, Stripe for payments, and some GSAP fun.`,
+    description: `Simple e-commerce training project. JAM Stack: Gatsby.js, DatoCMS and Netlify, Stripe for payments, PWA, and some GSAP fun.`,
     author: `Paweł Trojnacki`,
     siteUrl: `https://suntime.netlify.app/`,
   },

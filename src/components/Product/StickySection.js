@@ -9,7 +9,7 @@ const StickySection = styled.div`
     right: 0;
     width: 50%;
     margin: 0;
-    padding: 30px 0 0 50px;
+    padding: 30px 20px 0 50px;
   }
 `;
 

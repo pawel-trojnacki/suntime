@@ -19,12 +19,14 @@ import FirstImage from '../images/section-images/about-1.jpg';
 import SecondImage from '../images/section-images/about-2.jpg';
 import BeforeImg from '../images/transition-images/1.jpg';
 import AfterImg from '../images/transition-images/2.jpg';
+import SEO from '../components/SEO/seo';
 
 import { aboutColumns } from '../constants/aboutColumns';
 
 const AboutPage = () => {
   return (
     <Layout>
+      <SEO title="About" />
       <PageHeader
         pageName="About"
         title="Express your style"
