@@ -102,6 +102,7 @@ const Shop = () => {
               return sex === selected ? (
                 <ProductCard
                   key={name}
+                  slug={slug}
                   image={images[0].fluid}
                   secondImage={images[1].fluid}
                   name={name}

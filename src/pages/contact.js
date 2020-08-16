@@ -13,7 +13,7 @@ const ContactPage = () => {
   return (
     <Layout>
       <PageHeader pageName="Contact" title="Say hello to Suntime" />
-      <FlexWrapper>
+      <FlexWrapper as="div">
         <HeaderImage image={Image} width="50%" height="80vh" margin="0" />
         <ContentWrapper position="right">
           <Form

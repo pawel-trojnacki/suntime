@@ -1,12 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import gsap from 'gsap';
+import gsap, { Power2 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Layout from '../components/Layout/Layout';
 import SectionWrapper from '../components/Wrappers/SectionWrapper';
-import { ImageGallery, ProductImg } from '../components/Product/Gallery';
+import {
+  ImageGallery,
+  GalleryOverlay,
+  ImageWrapper,
+  ProductImg,
+} from '../components/Product/Gallery';
 import StickySection from '../components/Product/StickySection';
 import Heading from '../components/Heading/Heading';
 import Paragraph from '../components/Paragraph/Paragraph';
@@ -67,6 +72,12 @@ const ProductTemplate = ({
 }) => {
   const stickySection = useRef(null);
   const stickySectionWrap = useRef(null);
+  const animeOverlay = useRef(null);
+  const animeImages = useRef(null);
+
+  const tl = gsap.timeline({
+    defaults: { ease: Power2.ease, duration: 1.5, delay: 1 },
+  });
 
   useEffect(() => {
     const wrapHeight =
@@ -84,14 +95,57 @@ const ProductTemplate = ({
     }
   });
 
+  useEffect(() => {
+    tl.to(animeOverlay.current, { scaleX: 0 });
+  }, [tl]);
+
+  useEffect(() => {
+    gsap.utils.toArray('.product-gallery-image').forEach(image => {
+      gsap.fromTo(
+        image,
+        { scaleX: 1.5, scaleY: 1.5 },
+        {
+          scaleX: 1,
+          scaleY: 1,
+          duration: 1.5,
+          delay: 1,
+          ease: Power2.ease,
+        }
+      );
+    });
+  }, []);
+
+  useEffect(() => {
+    let delay = 2;
+    gsap.utils.toArray(stickySection.current.children).forEach(element => {
+      delay += 0.2;
+      gsap.fromTo(
+        element,
+        { opacity: 0, y: 10 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: delay,
+          ease: Power2.ease,
+        }
+      );
+    });
+  }, []);
+
   return (
     <Layout>
       <main>
         <StyledSectionWrapper ref={stickySectionWrap}>
-          <ImageGallery>
+          <ImageGallery ref={animeImages}>
             {images.map(({ fluid }) => {
-              return <ProductImg fluid={fluid} />;
+              return (
+                <ImageWrapper>
+                  <ProductImg className="product-gallery-image" fluid={fluid} />
+                </ImageWrapper>
+              );
             })}
+            <GalleryOverlay ref={animeOverlay} />
           </ImageGallery>
           <StickySection ref={stickySection}>
             <Heading as="h1" margin="20px 0">

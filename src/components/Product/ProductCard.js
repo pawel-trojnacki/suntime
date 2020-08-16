@@ -1,18 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import gsap, { Power2 } from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Img from 'gatsby-image';
 
 import Heading from '../Heading/Heading';
 import { Price, OldPrice } from './Price';
-
-// if (typeof window !== `undefined`) {
-//   gsap.registerPlugin(ScrollTrigger);
-//   gsap.core.globals('ScrollTrigger', ScrollTrigger);
-// }
 
 const Wrapper = styled.li`
   width: 100%;
@@ -89,91 +82,13 @@ const StyledImg = styled(Img)`
   }
 `;
 
-// const OverlayImg = styled.div`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   z-index: 1;
-//   transform-origin: right;
-//   background-color: ${({ theme }) => theme.white};
-// `;
-
 const PriceWrapper = styled.div`
   text-align: center;
-  /* opacity: 0; */
-`;
-
-const StyledHeading = styled(Heading)`
-  /* opacity: 0; */
 `;
 
 const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
-  const animeWrapper = useRef(null);
-  const animeImg = useRef(null);
-  // const animeImgOverlay = useRef(null);
-  const animeHeading = useRef(null);
-  const animePrice = useRef(null);
-
-  // const tl = gsap.timeline();
-  // const tl2 = gsap.timeline();
-  // const tl3 = gsap.timeline({ defaults: { duration: 1, delay: 0.5 } });
-
-  // useEffect(() => {
-  //   tl.fromTo(
-  //     animeImg.current,
-  //     { scaleX: 1.5, scaleY: 1.5 },
-  //     { scaleX: 1, scaleY: 1, duration: 1 }
-  //   );
-  //   ScrollTrigger.create({
-  //     animation: tl,
-  //     trigger: animeWrapper.current,
-  //     start: 'top center',
-  //   });
-  // }, [tl]);
-
-  // useEffect(() => {
-  //   tl2.fromTo(
-  //     animeImgOverlay.current,
-  //     {
-  //       scaleX: 1,
-  //     },
-  //     {
-  //       scaleX: 0,
-  //       duration: 1,
-  //       ease: Power2.easeInOut,
-  //     }
-  //   );
-  //   ScrollTrigger.create({
-  //     animation: tl2,
-  //     trigger: animeWrapper.current,
-  //     start: 'top center',
-  //   });
-  // }, [tl2]);
-
-  // useEffect(() => {
-  //   tl3
-  //     .fromTo(
-  //       animeHeading.current,
-  //       { y: '10px', opacity: 0 },
-  //       { y: '0px', opacity: 1 }
-  //     )
-  //     .fromTo(
-  //       animePrice.current,
-  //       { y: '10px', opacity: 0 },
-  //       { y: '0px', opacity: 1, delay: -0.5 }
-  //     );
-
-  //   ScrollTrigger.create({
-  //     animation: tl3,
-  //     trigger: animeWrapper.current,
-  //     start: 'bottom bottom',
-  //   });
-  // }, [tl3]);
-
   return (
-    <Wrapper ref={animeWrapper}>
+    <Wrapper>
       <AniLink
         to={`/products/${slug}`}
         cover
@@ -182,23 +97,16 @@ const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
         duration={2}
       >
         <ImageWrapper>
-          <ImageInnerWrapper ref={animeImg}>
+          <ImageInnerWrapper>
             <StyledImg fluid={image} />
             <StyledImg fluid={secondImage} />
           </ImageInnerWrapper>
-          {/* <OverlayImg ref={animeImgOverlay} /> */}
         </ImageWrapper>
       </AniLink>
-      <StyledHeading
-        as="h3"
-        xsmall
-        margin="20px 0 0px 0"
-        align="center"
-        ref={animeHeading}
-      >
+      <Heading as="h3" xsmall margin="20px 0 0px 0" align="center">
         {name}
-      </StyledHeading>
-      <PriceWrapper ref={animePrice}>
+      </Heading>
+      <PriceWrapper>
         {promoPrice && <OldPrice big>{`$${price}`}</OldPrice>}
         <Price big>{`$${promoPrice ? promoPrice : price}`}</Price>
       </PriceWrapper>

@@ -5,8 +5,9 @@ import { footerLinks } from '../../constants/footerLinks';
 import Paragraph from '../Paragraph/Paragraph';
 import LogoWrapper from '../LogoWrapper/LogoWrapper';
 import Logo from '../../images/logo_white.svg';
+import NewsletterSection from '../NewsletterSection/NewsletterSection';
 
-const StyledFooter = styled.footer`
+const SubFooter = styled.footer`
   background-color: ${({ theme }) => theme.black};
   margin: 0;
   padding: 0;
@@ -52,40 +53,43 @@ const StyledParagraph = styled(Paragraph)`
 
 const Footer = () => {
   return (
-    <StyledFooter>
-      <InnerWrapper>
-        {footerLinks.map(({ heading, links }) => {
-          return (
-            <Column key={heading}>
-              <StyledTitle as="h3" white>
-                {heading}
-              </StyledTitle>
-              {links.map(({ name, link }) => {
-                return (
-                  <StyledParagraph white small key={name} as="a" href={link}>
-                    {name}
-                  </StyledParagraph>
-                );
-              })}
-            </Column>
-          );
-        })}
-        <LastColumn>
-          <a href="/">
-            <LogoWrapper src={Logo} alt="suntime.com" />
-          </a>
-          <Paragraph
-            small
-            white
-            align="center"
-            margin="20px 0 10px 0"
-          >{`Copyright ${new Date().getFullYear()} Suntime. All rights reserved.`}</Paragraph>
-          <StyledTitle small white align="center">
-            By Paweł Trojnacki
-          </StyledTitle>
-        </LastColumn>
-      </InnerWrapper>
-    </StyledFooter>
+    <footer>
+      <NewsletterSection />
+      <SubFooter>
+        <InnerWrapper>
+          {footerLinks.map(({ heading, links }) => {
+            return (
+              <Column key={heading}>
+                <StyledTitle as="h3" white>
+                  {heading}
+                </StyledTitle>
+                {links.map(({ name, link }) => {
+                  return (
+                    <StyledParagraph white small key={name} as="a" href={link}>
+                      {name}
+                    </StyledParagraph>
+                  );
+                })}
+              </Column>
+            );
+          })}
+          <LastColumn>
+            <a href="/">
+              <LogoWrapper src={Logo} alt="suntime.com" />
+            </a>
+            <Paragraph
+              small
+              white
+              align="center"
+              margin="20px 0 10px 0"
+            >{`Copyright ${new Date().getFullYear()} Suntime. All rights reserved.`}</Paragraph>
+            <StyledTitle small white align="center">
+              By Paweł Trojnacki
+            </StyledTitle>
+          </LastColumn>
+        </InnerWrapper>
+      </SubFooter>
+    </footer>
   );
 };
 
