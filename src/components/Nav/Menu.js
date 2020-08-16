@@ -9,6 +9,9 @@ import ImageWrapper from './ImageWrapper';
 import ListWrapper from './ListWrapper';
 
 const Image = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -50,7 +53,10 @@ const Menu = ({ open }) => {
   return (
     <>
       <ImageWrapper open={open}>
-        <Image src={featuredImg} open={open} ref={animeImg} />
+        {pages.map(({ image }) => (
+          <Image src={image} style={{ zIndex: -1 }} />
+        ))}
+        <Image src={featuredImg} alt="menu image" open={open} ref={animeImg} />
       </ImageWrapper>
       <ListWrapper open={open}>
         <ul>
