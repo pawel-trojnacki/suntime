@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Layout from '../components/Layout/Layout';
 import PageHeader from '../components/Headers/PageHeader';
@@ -16,10 +15,7 @@ const ContactPage = () => {
       <FlexWrapper as="div">
         <HeaderImage image={Image} width="50%" height="80vh" margin="0" />
         <ContentWrapper position="right">
-          <Form
-            formAction="https://formspree.io/mdowjvky"
-            // newsletter
-          />
+          <Form formAction="https://formspree.io/mdowjvky" />
         </ContentWrapper>
       </FlexWrapper>
     </Layout>

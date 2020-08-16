@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
@@ -8,7 +8,7 @@ import HeaderImage from '../components/Headers/HeaderImage';
 import Image from '../images/header-images/shop-header.jpg';
 import Button from '../components/Button/Button';
 import SectionWrapper from '../components/Wrappers/SectionWrapper';
-import ProductList from '../components/Product/ProductList';
+import ColumnList from '../components/Column/ColumnList';
 import ProductCard from '../components/Product/ProductCard';
 import { filters } from '../constants/filters';
 
@@ -83,7 +83,7 @@ const Shop = () => {
             );
           })}
         </FilterWrapper>
-        <ProductList>
+        <ColumnList>
           {allDatoCmsProduct.nodes.map(
             ({ name, slug, images, price, promoprice, sex }) => {
               if (selected === allValue) {
@@ -112,7 +112,7 @@ const Shop = () => {
               ) : null;
             }
           )}
-        </ProductList>
+        </ColumnList>
       </SectionWrapper>
     </Layout>
   );

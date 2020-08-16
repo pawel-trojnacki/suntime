@@ -9,7 +9,7 @@ import Heading from '../components/Heading/Heading';
 import Paragraph from '../components/Paragraph/Paragraph';
 import Button from '../components/Button/Button';
 import SectionWrapper from '../components/Wrappers/SectionWrapper';
-import ProductList from '../components/Product/ProductList';
+import ColumnList from '../components/Column/ColumnList';
 import ProductCard from '../components/Product/ProductCard';
 import FlexWrapper from '../components/Wrappers/FlexWrapper';
 import ContentWrapper from '../components/Wrappers/ContentWrapper';
@@ -56,7 +56,7 @@ const IndexPage = () => {
       <HeroSection />
       <SectionWrapper>
         <Heading align="center">Recent products</Heading>
-        <ProductList>
+        <ColumnList>
           {allDatoCmsProduct.nodes.map(
             ({ name, slug, images, price, promoprice }) => {
               return (
@@ -72,7 +72,7 @@ const IndexPage = () => {
               );
             }
           )}
-        </ProductList>
+        </ColumnList>
       </SectionWrapper>
       <ImageTransitionSection beforeImg={BeforeImg} afterImg={AfterImg} />
       <FlexWrapper>

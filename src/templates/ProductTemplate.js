@@ -76,7 +76,7 @@ const ProductTemplate = ({
   const animeImages = useRef(null);
 
   const tl = gsap.timeline({
-    defaults: { ease: Power2.ease, duration: 1.5, delay: 1 },
+    defaults: { ease: Power2.ease, duration: 1.2, delay: 1 },
   });
 
   useEffect(() => {
@@ -107,7 +107,7 @@ const ProductTemplate = ({
         {
           scaleX: 1,
           scaleY: 1,
-          duration: 1.5,
+          duration: 1.2,
           delay: 1,
           ease: Power2.ease,
         }

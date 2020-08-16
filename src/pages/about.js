@@ -3,17 +3,24 @@ import React from 'react';
 import Layout from '../components/Layout/Layout';
 import PageHeader from '../components/Headers/PageHeader';
 import HeaderImage from '../components/Headers/HeaderImage';
-import Image from '../images/header-images/about-header.jpg';
 import Heading from '../components/Heading/Heading';
 import Paragraph from '../components/Paragraph/Paragraph';
 import FlexWrapper from '../components/Wrappers/FlexWrapper';
 import ContentWrapper from '../components/Wrappers/ContentWrapper';
 import ImagesSection from '../components/ImagesSection/ImagesSection';
 import ImageTransitionSection from '../components/ImageTransitionSection/ImageTransitionSection';
+import SectionWrapper from '../components/Wrappers/SectionWrapper';
+import ColumnList from '../components/Column/ColumnList';
+import Column from '../components/Column/Column';
+import Number from '../components/Number/Number';
+
+import Image from '../images/header-images/about-header.jpg';
 import FirstImage from '../images/section-images/about-1.jpg';
 import SecondImage from '../images/section-images/about-2.jpg';
 import BeforeImg from '../images/transition-images/1.jpg';
 import AfterImg from '../images/transition-images/2.jpg';
+
+import { aboutColumns } from '../constants/aboutColumns';
 
 const AboutPage = () => {
   return (
@@ -40,6 +47,22 @@ const AboutPage = () => {
         </ContentWrapper>
       </FlexWrapper>
       <ImageTransitionSection beforeImg={BeforeImg} afterImg={AfterImg} />
+      <SectionWrapper>
+        <Heading align="center">Why Suntime?</Heading>
+        <ColumnList spaceBottom>
+          {aboutColumns.map(({ number, title, desc }) => {
+            return (
+              <Column key={number}>
+                <Number align="center">{number}</Number>
+                <Heading as="h3" xsmall align="center">
+                  {title}
+                </Heading>
+                <Paragraph align="center">{desc}</Paragraph>
+              </Column>
+            );
+          })}
+        </ColumnList>
+      </SectionWrapper>
     </Layout>
   );
 };

@@ -4,22 +4,9 @@ import styled from 'styled-components';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Img from 'gatsby-image';
 
+import Column from '../Column/Column';
 import Heading from '../Heading/Heading';
 import { Price, OldPrice } from './Price';
-
-const Wrapper = styled.li`
-  width: 100%;
-  margin: 0 0 30px 0;
-  padding: 10px;
-
-  @media (min-width: 768px) {
-    width: 33%;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 10px 20px;
-  }
-`;
 
 const ImageWrapper = styled.div`
   margin: 0 auto;
@@ -88,7 +75,7 @@ const PriceWrapper = styled.div`
 
 const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
   return (
-    <Wrapper>
+    <Column>
       <AniLink
         to={`/products/${slug}`}
         cover
@@ -110,7 +97,7 @@ const ProductCard = ({ name, slug, image, secondImage, price, promoPrice }) => {
         {promoPrice && <OldPrice big>{`$${price}`}</OldPrice>}
         <Price big>{`$${promoPrice ? promoPrice : price}`}</Price>
       </PriceWrapper>
-    </Wrapper>
+    </Column>
   );
 };
 

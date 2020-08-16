@@ -80,7 +80,7 @@ const Form = ({ newsletter, formAction }) => {
         { y: 10, opacity: 0 },
         { y: 0, opacity: 1, delay: 1.5, duration: 0.6 }
       );
-  }, []);
+  }, [newsletter]);
 
   return (
     <StyledForm

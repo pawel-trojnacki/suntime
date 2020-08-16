@@ -6,6 +6,7 @@ export const theme = {
   lightGrey: '#aaa',
   regular: 400,
   light: 300,
+  xxxxl: '120px',
   xxxl: '64px',
   xxl: '50px',
   xl: '34px',
