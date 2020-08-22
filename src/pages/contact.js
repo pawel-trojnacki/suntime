@@ -33,30 +33,32 @@ const ContactPage = () => {
   return (
     <Layout>
       <SEO title="Contact" />
-      <PageHeader pageName="Contact" title="Say hello to Suntime" />
-      <FlexWrapper as="div">
-        <HeaderImage image={Image} width="50%" height="80vh" margin="0" />
-        <ContentWrapper position="right">
-          <Form formAction="https://formspree.io/mdowjvky" />
-        </ContentWrapper>
-      </FlexWrapper>
-      <SectionWrapper>
-        <Heading align="center">Contact details</Heading>
-        <ColumnList spaceBottom>
-          {contactDetails.map(({ id, title, icon, details }) => (
-            <Column key={id}>
-              <IconWrapper>
-                <StyledImg src={icon} alt={title} />
-              </IconWrapper>
-              {details.map(element => (
-                <Paragraph align="center" key={element}>
-                  {element}
-                </Paragraph>
-              ))}
-            </Column>
-          ))}
-        </ColumnList>
-      </SectionWrapper>
+      <main>
+        <PageHeader pageName="Contact" title="Say hello to Suntime" />
+        <FlexWrapper as="div">
+          <HeaderImage image={Image} width="50%" height="80vh" margin="0" />
+          <ContentWrapper position="right">
+            <Form formAction="https://formspree.io/mdowjvky" />
+          </ContentWrapper>
+        </FlexWrapper>
+        <SectionWrapper>
+          <Heading align="center">Contact details</Heading>
+          <ColumnList spaceBottom>
+            {contactDetails.map(({ id, title, icon, details }) => (
+              <Column key={id}>
+                <IconWrapper>
+                  <StyledImg src={icon} alt={title} />
+                </IconWrapper>
+                {details.map(element => (
+                  <Paragraph align="center" key={element}>
+                    {element}
+                  </Paragraph>
+                ))}
+              </Column>
+            ))}
+          </ColumnList>
+        </SectionWrapper>
+      </main>
     </Layout>
   );
 };

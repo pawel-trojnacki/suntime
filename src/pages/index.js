@@ -55,53 +55,55 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <HeroSection />
-      <SectionWrapper>
-        <Heading align="center">Recent products</Heading>
-        <ColumnList>
-          {allDatoCmsProduct.nodes.map(
-            ({ name, slug, images, price, promoprice }) => {
-              return (
-                <ProductCard
-                  key={name}
-                  slug={slug}
-                  image={images[0].fluid}
-                  secondImage={images[1].fluid}
-                  name={name}
-                  price={price}
-                  promoPrice={promoprice}
-                />
-              );
-            }
-          )}
-        </ColumnList>
-      </SectionWrapper>
-      <ImageTransitionSection beforeImg={BeforeImg} afterImg={AfterImg} />
-      <FlexWrapper>
-        <ContentWrapper position="left">
-          <Heading>Dispel the clouds with Suntime</Heading>
-          <Paragraph align="justify">
-            Before they sold out adaptogen artisan, subway tile unicorn
-            asymmetrical sustainable pour-over tumeric pok pok squid. Direct
-            trade tattooed polaroid vape viral plaid quinoa.
-          </Paragraph>
-          <StyledButton
-            as={AniLink}
-            to="/about"
-            cover
-            bg="#ffe0c5"
-            direction="bottom"
-            duration={2}
-          >
-            About
-          </StyledButton>
-        </ContentWrapper>
-        <ImagesSection
-          direction="right"
-          firstImg={FirstImage}
-          secondImg={SecondImage}
-        />
-      </FlexWrapper>
+      <main>
+        <HeroSection />
+        <SectionWrapper>
+          <Heading align="center">Recent products</Heading>
+          <ColumnList>
+            {allDatoCmsProduct.nodes.map(
+              ({ name, slug, images, price, promoprice }) => {
+                return (
+                  <ProductCard
+                    key={name}
+                    slug={slug}
+                    image={images[0].fluid}
+                    secondImage={images[1].fluid}
+                    name={name}
+                    price={price}
+                    promoPrice={promoprice}
+                  />
+                );
+              }
+            )}
+          </ColumnList>
+        </SectionWrapper>
+        <ImageTransitionSection beforeImg={BeforeImg} afterImg={AfterImg} />
+        <FlexWrapper>
+          <ContentWrapper position="left">
+            <Heading>Dispel the clouds with Suntime</Heading>
+            <Paragraph align="justify">
+              Before they sold out adaptogen artisan, subway tile unicorn
+              asymmetrical sustainable pour-over tumeric pok pok squid. Direct
+              trade tattooed polaroid vape viral plaid quinoa.
+            </Paragraph>
+            <StyledButton
+              as={AniLink}
+              to="/about"
+              cover
+              bg="#ffe0c5"
+              direction="bottom"
+              duration={2}
+            >
+              About
+            </StyledButton>
+          </ContentWrapper>
+          <ImagesSection
+            direction="right"
+            firstImg={FirstImage}
+            secondImg={SecondImage}
+          />
+        </FlexWrapper>
+      </main>
     </Layout>
   );
 };

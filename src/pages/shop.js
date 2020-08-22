@@ -68,29 +68,42 @@ const Shop = () => {
 
   return (
     <Layout>
-      <SEO title="Shop" />
-      <PageHeader pageName="Shop" title="Choose your sunglasses" />
-      <HeaderImage image={Image} />
-      <SectionWrapper>
-        <FilterWrapper>
-          {filters.map(filter => {
-            return (
-              <StyledButton
-                key={filter}
-                option={filter}
-                selected={selected}
-                onClick={() => setSelected(filter)}
-              >
-                {filter}
-              </StyledButton>
-            );
-          })}
-        </FilterWrapper>
-        <ColumnList>
-          {allDatoCmsProduct.nodes.map(
-            ({ name, slug, images, price, promoprice, sex }) => {
-              if (selected === allValue) {
-                return (
+      <main>
+        <SEO title="Shop" />
+        <PageHeader pageName="Shop" title="Choose your sunglasses" />
+        <HeaderImage image={Image} />
+        <SectionWrapper>
+          <FilterWrapper>
+            {filters.map(filter => {
+              return (
+                <StyledButton
+                  key={filter}
+                  option={filter}
+                  selected={selected}
+                  onClick={() => setSelected(filter)}
+                >
+                  {filter}
+                </StyledButton>
+              );
+            })}
+          </FilterWrapper>
+          <ColumnList>
+            {allDatoCmsProduct.nodes.map(
+              ({ name, slug, images, price, promoprice, sex }) => {
+                if (selected === allValue) {
+                  return (
+                    <ProductCard
+                      key={name}
+                      slug={slug}
+                      image={images[0].fluid}
+                      secondImage={images[1].fluid}
+                      name={name}
+                      price={price}
+                      promoPrice={promoprice}
+                    />
+                  );
+                }
+                return sex === selected ? (
                   <ProductCard
                     key={name}
                     slug={slug}
@@ -100,23 +113,12 @@ const Shop = () => {
                     price={price}
                     promoPrice={promoprice}
                   />
-                );
+                ) : null;
               }
-              return sex === selected ? (
-                <ProductCard
-                  key={name}
-                  slug={slug}
-                  image={images[0].fluid}
-                  secondImage={images[1].fluid}
-                  name={name}
-                  price={price}
-                  promoPrice={promoprice}
-                />
-              ) : null;
-            }
-          )}
-        </ColumnList>
-      </SectionWrapper>
+            )}
+          </ColumnList>
+        </SectionWrapper>
+      </main>
     </Layout>
   );
 };

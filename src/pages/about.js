@@ -27,44 +27,46 @@ const AboutPage = () => {
   return (
     <Layout>
       <SEO title="About" />
-      <PageHeader
-        pageName="About"
-        title="Express your style"
-        continuedTitle="in the rays of the sun"
-      />
-      <HeaderImage image={Image} height="100vh" />
-      <FlexWrapper>
-        <ImagesSection
-          direction="left"
-          firstImg={FirstImage}
-          secondImg={SecondImage}
+      <main>
+        <PageHeader
+          pageName="About"
+          title="Express your style"
+          continuedTitle="in the rays of the sun"
         />
-        <ContentWrapper>
-          <Heading>Cool design and best quality</Heading>
-          <Paragraph align="justify">
-            Before they sold out adaptogen artisan, subway tile unicorn
-            asymmetrical sustainable pour-over tumeric pok pok squid. Direct
-            trade tattooed polaroid vape viral plaid quinoa.
-          </Paragraph>
-        </ContentWrapper>
-      </FlexWrapper>
-      <ImageTransitionSection beforeImg={BeforeImg} afterImg={AfterImg} />
-      <SectionWrapper>
-        <Heading align="center">Why Suntime?</Heading>
-        <ColumnList spaceBottom>
-          {aboutColumns.map(({ number, title, desc }) => {
-            return (
-              <Column key={number}>
-                <Number align="center">{number}</Number>
-                <Heading as="h3" xsmall align="center">
-                  {title}
-                </Heading>
-                <Paragraph align="center">{desc}</Paragraph>
-              </Column>
-            );
-          })}
-        </ColumnList>
-      </SectionWrapper>
+        <HeaderImage image={Image} height="100vh" />
+        <FlexWrapper>
+          <ImagesSection
+            direction="left"
+            firstImg={FirstImage}
+            secondImg={SecondImage}
+          />
+          <ContentWrapper>
+            <Heading>Cool design and best quality</Heading>
+            <Paragraph align="justify">
+              Before they sold out adaptogen artisan, subway tile unicorn
+              asymmetrical sustainable pour-over tumeric pok pok squid. Direct
+              trade tattooed polaroid vape viral plaid quinoa.
+            </Paragraph>
+          </ContentWrapper>
+        </FlexWrapper>
+        <ImageTransitionSection beforeImg={BeforeImg} afterImg={AfterImg} />
+        <SectionWrapper>
+          <Heading align="center">Why Suntime?</Heading>
+          <ColumnList spaceBottom>
+            {aboutColumns.map(({ number, title, desc }) => {
+              return (
+                <Column key={number}>
+                  <Number align="center">{number}</Number>
+                  <Heading as="h3" xsmall align="center">
+                    {title}
+                  </Heading>
+                  <Paragraph align="center">{desc}</Paragraph>
+                </Column>
+              );
+            })}
+          </ColumnList>
+        </SectionWrapper>
+      </main>
     </Layout>
   );
 };
